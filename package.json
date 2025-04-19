@@ -1,0 +1,20 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/snooze26/Battleship#readme",
+  "bugs": {
+    "url": "https://github.com/snooze26/Battleship/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snooze26/Battleship.git"
+  },
+  "license": "ISC",
+  "author": "Langdon Douglas",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
