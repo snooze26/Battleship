@@ -9,7 +9,6 @@ Extend Ship into the following types of ships and implement the values:
     Submarine: 3 
     Patrol Boat: 2 
 
-Create a info
 
 Create a hit function that increases the hits to the user's ship
     hit(ship){ 

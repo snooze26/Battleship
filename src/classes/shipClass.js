@@ -2,35 +2,41 @@ export class Ship {
     constructor(type, length, hits=0,sunk=false) {
         this.type = type;
         this.length = length; 
+        this.hits = hits;
+        this.sunk = sunk
+    }
+
+    hit() { 
+        this.hits++
     }
 
 }
 
-class Carrier extends Ship { 
+export class Carrier extends Ship { 
     constructor() {
         super("Carrier" , 5)
     }
 } 
 
-class Battleship extends Ship { 
+export class Battleship extends Ship { 
     constructor() {
         super("Battleship" , 4)
     }
 } 
 
-class Destroyer extends Ship { 
+export class Destroyer extends Ship { 
     constructor() {
         super("Destroyer" , 3)
     }
 } 
 
-class Submarine extends Ship { 
+export class Submarine extends Ship { 
     constructor() {
         super("Submarine" , 3)
     }
 } 
 
-class Patrol extends Ship { 
+export class Patrol extends Ship { 
     constructor() {
         super("Patrol" , 2)
     }
@@ -42,10 +48,4 @@ const testD = new Destroyer();
 const testS = new Submarine(); 
 const testP = new Patrol(); 
 
-
-
-console.log(testC.type , testC.length)
-console.log(testB.type , testB.length)
-console.log(testD.type , testD.length)
-console.log(testS.type , testS.length)
-console.log(testP.type , testP.length)
+console.log(testC.hits)
