@@ -10,6 +10,14 @@ export class Ship {
         this.hits++
     }
 
+    isSunk() { 
+        if(this.hits == this.length) { 
+            console.log("ships has shunk")
+            return true
+        }
+        return false
+    }
+
 }
 
 export class Carrier extends Ship { 
@@ -48,4 +56,8 @@ const testD = new Destroyer();
 const testS = new Submarine(); 
 const testP = new Patrol(); 
 
+testC.hits = 5; 
+
+const shipIs = testC.isSunk();
+console.log(shipIs)
 console.log(testC.hits)
