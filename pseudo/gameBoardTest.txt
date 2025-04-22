@@ -1,0 +1,25 @@
+create a class called gameboard
+
+constructor{ 
+    set the constructors as containerId 
+    create a html div element called container 
+    set the boards container to document containerId
+    set the board's board to an empty array 
+    call the create board function 
+}
+
+createBoard() { 
+    in a foor loop. increment the row variable until you reach 8
+        for each loop create a empty row by assign the boards[row] to an empty array
+        in a for loop increments the columns up to 8 
+            for each loop create a board space thats assign to var "space"
+            create css for the board space and .add it to the classlist
+            assign id to each space 
+            the space to the container 
+            assign the board's row/column to the space 
+}
+
+validLocation(position) { 
+    create boardLimit and assign it to 8 
+    create an object that takes in x ,y variables assign poistion to it
+}
