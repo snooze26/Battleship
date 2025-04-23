@@ -1,0 +1,7 @@
+hits function test {
+    expect a ship Carrier to have a expectation of 1 hit after running the hits function 
+}
+
+is sunk function test { 
+    expect: ship's length to equal ships's hit 
+}

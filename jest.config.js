@@ -5,6 +5,9 @@
 
 /** @type {import('jest').Config} */
 const config = {
+  transform: {
+    "^.+\\.js$": "babel-jest"
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -195,4 +198,4 @@ const config = {
   // watchman: true,
 };
 
-module.exports = config;
+export default config; 

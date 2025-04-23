@@ -9,6 +9,7 @@ Extend Ship into the following types of ships and implement the values:
     Submarine: 3 
     Patrol Boat: 2 
 
+
 Create a hit function that increases the hits to the user's ship
     hit(ship){ 
         increment ship.hit
@@ -19,3 +20,4 @@ Create a function that calculates if a ship is sunk based on the length and numb
         if ship hits equal ship's length then ship's sunk is true 
         create popup alert that ship is sunk 
     }
+

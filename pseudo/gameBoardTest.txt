@@ -1,0 +1,73 @@
+create a class called gameboard
+    create gameboard variable globally 
+    create an array for the attackCoords
+
+constructor{ 
+    set the constructors as containerId 
+    create a html div element called container 
+    set the boards container to document containerId
+    set the board's board to an empty array 
+    call the create board function 
+}
+
+createBoard() { 
+    in a foor loop. increment the row variable until you reach 8
+        for each loop create a empty row by assign the boards[row] to an empty array
+        in a for loop increments the columns up to 8 
+            for each loop create a board space thats assign to var "space"
+            create css for the board space and .add it to the classlist
+            assign id to each space 
+            the space to the container 
+            assign the board's row/column to the space 
+}
+
+validLocation(position) { 
+    create boardLimit and assign it to 8 
+    create an object that takes in x ,y variables assign poistion to it
+    check if x is greater than or equal to 0 and if x is less than board limit 
+    check if y is greater than or equal to 0 and if y is less than board limit 
+        if true, return true
+    else if false return false 
+}
+
+isCellValid(x , y) { 
+    check if x is greater than or equal to 0 and if x is less than the length of rows &&
+    check if y is greater than or equal to 0 and if y is less than the length of columns
+    if true return true, if false return false 
+
+}
+
+getCoords(input) { 
+    check if the input type is not a string throw error
+    split the coordinates into a variable called "coords" 
+    check if the length of coords equal 2 
+        if false then throw a error for the valid format 
+
+    parseInt both numbers and trim the white space with a radix of 10 
+
+    check if both numbers are integers if not then throw errors 
+    return both numbers in an array
+}
+
+getCell(x , y ) { 
+    if these coordinates are not valid then return null 
+    if true then return these coords with the gameboard ex. "gameboard[x][y]"
+}
+
+recieveAttack(input) { 
+    check if the input coords are valid if false return 
+    split the coordinates into a variable called "coords" 
+    check if the coords return a valid cell, if false then return function 
+    check if the coords are in the attackCoords array if true then return 
+    create a variable cell that is retrieving the coordinates.
+    add coordinates to the attackCoords array; 
+    check if the coordinates have already been attacked by using the isAttackMarker function 
+
+    
+}
+
+isAttackMarker(cell) {
+    create a variable that 
+}
+
+
