@@ -1,6 +1,7 @@
 create a class called gameboard
     create gameboard variable globally 
     create an array for the attackCoords
+    create a ships object that contains a property for the ships on the board "shipsAfloat"
 
 constructor{ 
     set the constructors as containerId 
@@ -19,6 +20,7 @@ createBoard() {
             assign id to each space 
             the space to the container 
             assign the board's row/column to the space 
+            fill each space with "-" to set a neutral state 
 }
 
 validLocation(position) { 
@@ -55,16 +57,29 @@ getCell(x , y ) {
 }
 
 recieveAttack(input) { 
-    check if the input coords are valid if false return 
-    split the coordinates into a variable called "coords" 
-    check if the coords return a valid cell, if false then return function 
-    check if the coords are in the attackCoords array if true then return 
-    create a variable cell that is retrieving the coordinates.
-    add coordinates to the attackCoords array; 
-    check if the coordinates have already been attacked by using the isAttackMarker function 
-
+    check if the input coords are valid if false return (making sure input coordinates are valid)
+    split the coordinates into a variable called "coords" (collecting the inputs and seperating from punctuations)
+    check if the coords return a valid cell, if false then return function (checking if the coordinate is a valid space)
+    check if the coords are in the attackCoords array if true then return (checking if the coords have already been hit)
+    create a variable cell that is retrieving the coordinates using x & y . (retrieves cell contents: the ship object)
+    add coordinates to the attackCoords array; (adds the cell to the attackcoords array making it not hittable anymore)
+    check if the coordinates have already been attacked 
+        mark the ship if it has been hit 
+        assign the ship to the cell and hit the ship 
+            if ship has been sunk 
+                remove one ship from the board and make the cell content "X"
+                // add a identifier property to the ship class and a shipDamage property 
+                assign the ship's blockedCells using it's identifier to a shipsDamage variable 
+                push the blockedCells into the attackCoords variable 
+                return the ship with the status now as sunk and damage is assigned to shipsDamage 
+        ship has been hit but not sunk. 
+        mark the cell as "X"
+        return status as hit and damage is assigned to shipsDamage 
+    ship has not been hit. return the status as miss and damage as null
     
 }
+
+
 
 isAttackMarker(cell) {
     create a variable that 
