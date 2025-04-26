@@ -3,12 +3,15 @@ create a class called gameboard
     create an array for the attackCoords
     create a ships object that contains a property for the ships on the board "shipsAfloat"
 
+
+
 constructor{ 
     set the constructors as containerId 
     create a html div element called container 
     set the boards container to document containerId
     set the board's board to an empty array 
     call the create board function 
+    create row and column properties 
 }
 
 createBoard() { 
@@ -54,6 +57,31 @@ getCoords(input) {
 getCell(x , y ) { 
     if these coordinates are not valid then return null 
     if true then return these coords with the gameboard ex. "gameboard[x][y]"
+}
+
+placeShip(coords, ship) { 
+    check if # of coords is equal to ship's length if false
+         return false 
+    if coords overflow then
+         return false 
+    if coords are not free then 
+        return false 
+
+    for each coordinate 
+        split coords into x and y 
+        set gameboard's x and y to ship 
+    
+    increase the shipsAfloat property by 1 
+    call the blockedCell function to find the blocked cells around the ship 
+    
+    IN the ships object 
+        create a new entrty with ship's Id as the key 
+        set value of new entry to an object holding: 
+            properties:
+                blockedcells - list of surrounding blocked cells
+                shipCoordss - list of ship;s coords 
+                
+    return list of ship coords and blockedCells 
 }
 
 recieveAttack(input) { 
