@@ -54,11 +54,6 @@ getCoords(input) {
     return both numbers in an array
 }
 
-getCell(x , y ) { 
-    if these coordinates are not valid then return null 
-    if true then return these coords with the gameboard ex. "gameboard[x][y]"
-}
-
 placeShip(coords, ship) { 
     check if # of coords is equal to ship's length if false
          return false 
@@ -79,8 +74,8 @@ placeShip(coords, ship) {
         set value of new entry to an object holding: 
             properties:
                 blockedcells - list of surrounding blocked cells
-                shipCoordss - list of ship;s coords 
-                
+                shipCoords - list of ship's coords 
+
     return list of ship coords and blockedCells 
 }
 
@@ -107,10 +102,89 @@ recieveAttack(input) {
     
 }
 
-
-
 isAttackMarker(cell) {
     create a variable that 
 }
+
+allShipsSunk() { 
+    return shipAfloat equal to 0 
+}
+
+retrieveCell(x , y ) { 
+    if these coordinates are not valid then return null 
+    if true then return these coords with the gameboard ex. "gameboard[x][y]"
+}
+
+clearBoard() { 
+    reassign gameBoard to a new gameBoard using the createBoard function with the # of rows and cols
+    set attackCoords to an empty array 
+    reset the ships object shipAfloat proeprty to 0 
+}
+
+getGameBoard() {
+    return the gameBoard 
+ }
+
+howManyShips() { 
+    return shipsAfloat
+}
+
+retrieveSurroundingCells(coords) { 
+    define the 8 directions around a cell using shipsDirections
+    create a array called shipMoves and assign it to empty array
+
+    for each offset(x and y) in shipsDirections
+        for each coord in coordinates 
+        split coord into x and y parts 
+        convert x and y to numbers 
+
+        calculate newX = x + offset of x 
+        newY = x + offset of y 
+
+        if newX/newY are not valid cells 
+            skip to next coord
+        if the cell at newX/Y is not "X" or "-"
+            skip to next coord 
+        
+        Add newX/Y as a string to shipMoves 
+    
+    define newShipMoves to remove duplicate coords from shipMoves
+
+    return newShipMoves
+}
+
+surroundShipWithBlockedCells(shipCoords) { 
+    define surroundingCells by calling retrieveSurroundingCells with shipCoords as its input 
+    create an empty array called acc for the accumlator 
+    for each coord in surroundingCells 
+        split coord into x and y 
+        convert x and y into numbers 
+        Set the cell at x and y on the gameBoard to "X" marking it as blocked 
+        add coord to acc array 
+    return acc (all blocked cell coords)
+}
+
+isCoordsFree(coords) { 
+    define freeCoords by calling filter on coords 
+        filter criteria:
+            for each coordinate 
+                split the the coords 
+                assign x and y to the split coords 
+                define cell by calling retrieveCell with x and y as the inputed values 
+                if cell's value is "?" and not "-" add the coord to freeCoords
+        return true if freeCoords.length is equal to coords.length         
+}
+
+isCoordsOverflowing(coords) { 
+    define validCoords by calling filter on coords 
+        filter criteria: 
+            for each coordinate
+                split the coords 
+                assing x and y to the split coords 
+                return true if x and y coords are a valid cell 
+        return true if validCoords length is equal to coords' length 
+}
+
+
 
 
