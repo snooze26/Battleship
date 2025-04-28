@@ -1,29 +1,21 @@
-create a class called gameboard
-    create gameboard variable globally 
+create a class called battleField
+    create battleField variable globally 
     create an array for the attackCoords
     create a ships object that contains a property for the ships on the board "shipsAfloat"
 
 
 
-constructor{ 
-    set the constructors as containerId 
-    create a html div element called container 
-    set the boards container to document containerId
-    set the board's board to an empty array 
-    call the create board function 
-    create row and column properties 
+constructor(row , col){ 
+    set row and col to the inputed values 
+    run the createBattleField on row and col properties with bField
 }
 
-createBoard() { 
-    in a foor loop. increment the row variable until you reach 8
-        for each loop create a empty row by assign the boards[row] to an empty array
-        in a for loop increments the columns up to 8 
-            for each loop create a board space thats assign to var "space"
-            create css for the board space and .add it to the classlist
-            assign id to each space 
-            the space to the container 
-            assign the board's row/column to the space 
-            fill each space with "-" to set a neutral state 
+createBattleField(rows, col) { 
+    return
+        create a empty array of arrays named with the row value
+            make array mappable by spreading these elements
+            map through the rows and enter an array of columns 
+            fill these columns with "-" as the placeholder for the board 
 }
 
 validLocation(position) { 
@@ -64,7 +56,7 @@ placeShip(coords, ship) {
 
     for each coordinate 
         split coords into x and y 
-        set gameboard's x and y to ship 
+        set battleField's x and y to ship 
     
     increase the shipsAfloat property by 1 
     call the blockedCell function to find the blocked cells around the ship 
@@ -112,17 +104,17 @@ allShipsSunk() {
 
 retrieveCell(x , y ) { 
     if these coordinates are not valid then return null 
-    if true then return these coords with the gameboard ex. "gameboard[x][y]"
+    if true then return these coords with the battleField ex. "battleField[x][y]"
 }
 
 clearBoard() { 
-    reassign gameBoard to a new gameBoard using the createBoard function with the # of rows and cols
+    reassign battleField to a new battleField using the createBoard function with the # of rows and cols
     set attackCoords to an empty array 
     reset the ships object shipAfloat proeprty to 0 
 }
 
-getGameBoard() {
-    return the gameBoard 
+getbattleField() {
+    return the battleField 
  }
 
 howManyShips() { 
@@ -159,7 +151,7 @@ surroundShipWithBlockedCells(shipCoords) {
     for each coord in surroundingCells 
         split coord into x and y 
         convert x and y into numbers 
-        Set the cell at x and y on the gameBoard to "X" marking it as blocked 
+        Set the cell at x and y on the battleField to "X" marking it as blocked 
         add coord to acc array 
     return acc (all blocked cell coords)
 }
