@@ -25,7 +25,7 @@ export class Battle_Field {
         return false 
     }
 
-    getCoords(input) { 
+    getCell(input) { 
         // check if input is not a string 
         if(typeof input !== "string") return console.error("Please enter a valid location 'x,x");
         
@@ -44,10 +44,16 @@ export class Battle_Field {
         // return coords
         return [xNumber , yNumber]; 
     }
+
+    noShipsAfloat(){ 
+        return this.ships.shipsAfloat === 0;
+
+    }
 }
 
 
-const testBfieldd = new Battle_Field(10, 10); 
-const input = '10-10';
 
-console.log(testBfieldd.getCoords(input));
+// const testBfieldd = new Battle_Field(10, 10); 
+// const input = '10-10';
+
+// console.log(testBfieldd.getCoords(input));
