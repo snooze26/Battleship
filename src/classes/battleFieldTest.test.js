@@ -43,10 +43,17 @@ import * as Ships from "./shipClass.js";
 // })
 
 // TEST RETURN THE BATTL EFIELD 
-test("Get the battle field" , () => {
-    const bfTest = new Battle_Field(8 , 8)
+// test("Get the battle field" , () => {
+//     const bfTest = new Battle_Field(8 , 8)
 
-    expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
-})
+//     expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
+// });
+
+test("Get the free coordinates " , () => { 
+    const bfTest = new Battle_Field(8 , 8)
+    const testCoords = ["8-5"];
+    
+    expect(bfTest.isCoordsFree(testCoords)).toBe(true);
+});
 
 

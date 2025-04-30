@@ -56,6 +56,17 @@ export class Battle_Field {
     getBattleField() { 
         return this.bField;
     }
+
+    isCoordsFree(coords) { 
+        const freeCoords = coords.filter(coordinate => {
+            sepNums = coords.split("-");
+            const [x , y] = sepNums; 
+            const cell = this.getCell(x , y); 
+
+            return cell === "-" && cell !== "X";
+        });
+        return freeCoords.length === coords.length;
+    }
 }
 
 
