@@ -4,12 +4,14 @@ create a class called battleField
     create a ships object that contains a property for the ships on the board "shipsAfloat"
 
 
-
+DONEDONEDONEDONEDONEDONEDONEDONEDONE
 constructor(row , col){ 
     set row and col to the inputed values 
     run the createBattleField on row and col properties with bField
 }
+********************
 
+DONEDONEDONEDONEDONEDONEDONEDONEDONE
 createBattleField(rows, col) { 
     return
         create a empty array of arrays named with the row value
@@ -17,6 +19,7 @@ createBattleField(rows, col) {
             map through the rows and enter an array of columns 
             fill these columns with "-" as the placeholder for the board 
 }
+********************
 
 validLocation(position) { 
     create boardLimit and assign it to 8 
@@ -27,14 +30,10 @@ validLocation(position) {
     else if false return false 
 }
 
-isCellValid(x , y) { 
-    check if x is greater than or equal to 0 and if x is less than the length of rows &&
-    check if y is greater than or equal to 0 and if y is less than the length of columns
-    if true return true, if false return false 
+** done 
 
-}
 
-getCoords(input) { 
+getCell(input) { DONE **********
     check if the input type is not a string throw error
     split the coordinates into a variable called "coords" 
     check if the length of coords equal 2 
@@ -98,13 +97,8 @@ isAttackMarker(cell) {
     create a variable that 
 }
 
-allShipsSunk() { 
+allShipsSunk() { DONE********
     return shipAfloat equal to 0 
-}
-
-retrieveCell(x , y ) { 
-    if these coordinates are not valid then return null 
-    if true then return these coords with the battleField ex. "battleField[x][y]"
 }
 
 clearBoard() { 
@@ -113,11 +107,11 @@ clearBoard() {
     reset the ships object shipAfloat proeprty to 0 
 }
 
-getbattleField() {
+getbattleField() { DONE 
     return the battleField 
  }
 
-howManyShips() { 
+howManyShips() { DONEEEEEE
     return shipsAfloat
 }
 
@@ -163,7 +157,7 @@ isCoordsFree(coords) {
                 split the the coords 
                 assign x and y to the split coords 
                 define cell by calling retrieveCell with x and y as the inputed values 
-                if cell's value is "?" and not "-" add the coord to freeCoords
+                if cell's value is "-" and not "X" add the coord to freeCoords
         return true if freeCoords.length is equal to coords.length         
 }
 
