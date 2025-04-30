@@ -31,7 +31,7 @@ export class Battle_Field {
         
         //split coords into two elements 
         const coords = input.split('-');
-        if(!coords == 2) return console.error("Please enter a valid location 'x");
+        if(!coords.length == 2) return console.error("Please enter a valid location 'x");
 
         //change coords to numbers
         const xNumber = parseInt(coords[0].trim(), 10);
