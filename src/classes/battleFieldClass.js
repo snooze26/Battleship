@@ -52,6 +52,10 @@ export class Battle_Field {
     howManyShips() { 
         return this.ships.shipsAfloat; 
     }
+
+    getBattleField() { 
+        return this.bField;
+    }
 }
 
 

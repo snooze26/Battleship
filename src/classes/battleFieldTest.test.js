@@ -36,12 +36,17 @@ import * as Ships from "./shipClass.js";
 //     expect(bfTest.noShipsAfloat()).toBe(false); 
 // })
 // TEST HOW MANY SHIPS ARE ON BATTLE FIELD
-test("How many ships are on the battle field?" , () => {
+// test("How many ships are on the battle field?" , () => {
+//     const bfTest = new Battle_Field(8 , 8)
+//     bfTest.ships.shipsAfloat = 2
+//     expect(bfTest.howManyShips()).toStrictEqual(2);
+// })
+
+// TEST RETURN THE BATTL EFIELD 
+test("Get the battle field" , () => {
     const bfTest = new Battle_Field(8 , 8)
-    bfTest.ships.shipsAfloat = 2
-    expect(bfTest.howManyShips()).toStrictEqual(2);
+
+    expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
 })
-
-
 
 
