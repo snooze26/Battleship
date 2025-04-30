@@ -47,7 +47,10 @@ export class Battle_Field {
 
     noShipsAfloat(){ 
         return this.ships.shipsAfloat === 0;
+    }
 
+    howManyShips() { 
+        return this.ships.shipsAfloat; 
     }
 }
 

@@ -24,8 +24,24 @@ import * as Ships from "./shipClass.js";
 
 // }) 
 
-// TEST ALLSHIPS SUNK
-test("There are no ships afloat" , () => { 
+// TEST NO SHIPS AFLOAT
+// test("There are no ships afloat" , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     expect(bfTest.noShipsAfloat()).toBe(true); 
+// });
+
+// test("There are is 2 ships afloat" , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     bfTest.ships.shipsAfloat = 2
+//     expect(bfTest.noShipsAfloat()).toBe(false); 
+// })
+// TEST HOW MANY SHIPS ARE ON BATTLE FIELD
+test("How many ships are on the battle field?" , () => {
     const bfTest = new Battle_Field(8 , 8)
-    expect(bfTest.noShipsAfloat()).toBe(true); 
-});
+    bfTest.ships.shipsAfloat = 2
+    expect(bfTest.howManyShips()).toStrictEqual(2);
+})
+
+
+
+
