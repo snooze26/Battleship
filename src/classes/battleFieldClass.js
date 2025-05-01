@@ -1,4 +1,5 @@
 import { error } from "console";
+import { validateHeaderName } from "http";
 
 export class Battle_Field { 
     bField; 
@@ -59,14 +60,25 @@ export class Battle_Field {
 
     isCoordsFree(coords) { 
         const freeCoords = coords.filter(coordinate => {
-            sepNums = coords.split("-");
-            const [x , y] = sepNums; 
-            const cell = this.getCell(x , y); 
+            const [xNumber , yNumber] = coordinate.split('-'); 
+            const x = parseInt(xNumber, 10);
+            const y = parseInt(yNumber, 10);
 
-            return cell === "-" && cell !== "X";
+            if(!this.validLocation([x , y])) return false; 
+
+            const cell = this.bField[x][y];
+            return cell === '-';
+
         });
         return freeCoords.length === coords.length;
     }
+
+    isCoordsFreeAndValid(coords) {
+            return coords.every(coord => {
+                const [x , y] = coord.split('-').map(Number);
+                return this.validLocation([x , y]) && this.bField[x][y] === '='; 
+            });
+    };
 }
 
 

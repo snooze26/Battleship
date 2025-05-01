@@ -48,12 +48,33 @@ import * as Ships from "./shipClass.js";
 
 //     expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
 // });
-
-test("Get the free coordinates " , () => { 
-    const bfTest = new Battle_Field(8 , 8)
-    const testCoords = ["8-5"];
+// Test isCoordsFree
+// test("Get the free coordinates " , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     const testCoords = ["5-6" , "4-5"];
     
-    expect(bfTest.isCoordsFree(testCoords)).toBe(true);
+//     expect(bfTest.isCoordsFree(testCoords)).toBe(true);
+// });
+
+// test("Get the free coordinates " , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     const testCoords = ["5-9" , "4-5"];
+    
+//     expect(bfTest.isCoordsFree(testCoords)).toBe(false);
+// });
+
+test("Coords are overflowing " , () => { 
+    const bfTest = new Battle_Field(8 , 8)
+    const testCoords = ["5-6" , "4-5"];
+    
+    expect(bfTest.isCoordsOverflowing(testCoords)).toBe(false);
+});
+
+test("Coords are not overflwoing " , () => { 
+    const bfTest = new Battle_Field(8 , 8)
+    const testCoords = ["5-9" , "4-5"];
+    
+    expect(bfTest.isCoordsOverflowing(testCoords)).toBe(true);
 });
 
 
