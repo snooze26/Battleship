@@ -68,11 +68,16 @@ export class Battle_Field {
         return freeCoords.length === coords.length;
     }
 
-    isCoordsFreeAndAvailable(coords) { 
+    isCoordsFreeAndValid(coords) { 
         return coords.every(coord => {
             const [x , y] = coord.split('-').map(Number);
             return this.validLocation([x ,y]) && this.bField[x][y] === '-'; 
         })
+    }
+    clearBoard() { 
+        this.bField = new Battle_Field(8 , 8);
+        this.attackCords = []; 
+        this.ships.shipsAfloat = 0;
     }
 }
 

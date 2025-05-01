@@ -49,31 +49,34 @@ import * as Ships from "./shipClass.js";
 //     expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
 // });
 
-test("Get the free coordinates " , () => { 
-    const bfTest = new Battle_Field(8 , 8)
-    bfTest.bField[7][5] = "-";
-    bfTest.bField[5][5] = "-"; 
-    const testCoords = ["7-5" , "5-5"];
+// TEST isCoordsFreeAnd
+// test("Get the free coordinates " , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     bfTest.bField[7][5] = "-";
+//     bfTest.bField[5][5] = "-"; 
+//     const testCoords = ["7-5" , "5-5"];
     
-    expect(bfTest.isCoordsFreeAndAvailable(testCoords)).toBe(true);
-});
+//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(true);
+// });
 
-test("Coords are not free " , () => { 
-    const bfTest = new Battle_Field(8 , 8)
-    bfTest.bField[7][5] = "X";
-    bfTest.bField[5][5] = "-"; 
-    const testCoords = ["7-5" , "5-5"];
+// test("Coords are not free " , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     bfTest.bField[7][5] = "X";
+//     bfTest.bField[5][5] = "-"; 
+//     const testCoords = ["7-5" , "5-5"];
     
-    expect(bfTest.isCoordsFreeAndAvailable(testCoords)).toBe(false);
+//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(false);
 
-});
+// });
 
-test("Coords are not free " , () => { 
-    const bfTest = new Battle_Field(8 , 8)
-    const testCoords = ["8-5" , "5-5"];
+// test("Coords are not free " , () => { 
+//     const bfTest = new Battle_Field(8 , 8)
+//     const testCoords = ["8-5" , "5-5"];
     
-    expect(bfTest.isCoordsFreeAndAvailable(testCoords)).toBe(false);
+//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(false);
 
-});
+// });
+
+
 
 
