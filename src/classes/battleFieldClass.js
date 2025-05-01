@@ -1,4 +1,5 @@
 import { error } from "console";
+import { validateHeaderName } from "http";
 
 export class Battle_Field { 
     bField; 
@@ -71,6 +72,13 @@ export class Battle_Field {
         });
         return freeCoords.length === coords.length;
     }
+
+    isCoordsFreeAndValid(coords) {
+            return coords.every(coord => {
+                const [x , y] = coord.split('-').map(Number);
+                return this.validLocation([x , y]) && this.bField[x][y] === '='; 
+            });
+    };
 }
 
 
