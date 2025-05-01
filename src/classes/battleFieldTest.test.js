@@ -51,9 +51,16 @@ import * as Ships from "./shipClass.js";
 
 test("Get the free coordinates " , () => { 
     const bfTest = new Battle_Field(8 , 8)
-    const testCoords = ["8-5"];
+    const testCoords = ["5-6" , "4-5"];
     
     expect(bfTest.isCoordsFree(testCoords)).toBe(true);
+});
+
+test("Get the free coordinates " , () => { 
+    const bfTest = new Battle_Field(8 , 8)
+    const testCoords = ["5-9" , "4-5"];
+    
+    expect(bfTest.isCoordsFree(testCoords)).toBe(false);
 });
 
 
