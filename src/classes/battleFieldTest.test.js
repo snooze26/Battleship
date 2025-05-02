@@ -80,9 +80,14 @@ import * as Ships from "./shipClass.js";
 test("battleField is clear", () => { 
     const bfTest = new Battle_Field(8,8);
     bfTest.bField[4][5] = 'X-X'; 
-    bfTest.bField[7][7] = "X-X"; 
+    bfTest.bField[7][7] = "X-X";
+    bfTest.ships.shipsAfloat = 5; 
+    bfTest.attackCords = [5,5]
     bfTest.clearBoard();
     expect(bfTest.bField[4][5] && bfTest.bField[7][7]).toBe('-');
+    expect(bfTest.ships.shipsAfloat).toBe(0);
+    expect(bfTest.attackCords).toHaveLength(0);
+    
 })
 
 
