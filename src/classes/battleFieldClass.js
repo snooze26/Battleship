@@ -75,7 +75,7 @@ export class Battle_Field {
         })
     }
     clearBoard() { 
-        this.bField = new Battle_Field(8 , 8);
+        this.bField = this.createBattleField(this.row , this.col);
         this.attackCords = []; 
         this.ships.shipsAfloat = 0;
     }

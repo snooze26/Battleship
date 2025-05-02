@@ -77,6 +77,16 @@ import * as Ships from "./shipClass.js";
 
 // });
 
+test("battleField is clear", () => { 
+    const bfTest = new Battle_Field(8,8);
+    bfTest.bField[4][5] = 'X-X'; 
+    bfTest.bField[7][7] = "X-X"; 
+    bfTest.clearBoard();
+    expect(bfTest.bField[4][5] && bfTest.bField[7][7]).toBe('-');
+})
+
+
+
 
 
 
