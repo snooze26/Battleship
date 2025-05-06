@@ -48,54 +48,26 @@ import * as Ships from "./shipClass.js";
 
 //     expect(bfTest.getBattleField()).toStrictEqual(bfTest.bField); 
 // });
-
-// TEST isCoordsFreeAnd
+// Test isCoordsFree
 // test("Get the free coordinates " , () => { 
 //     const bfTest = new Battle_Field(8 , 8)
-//     bfTest.bField[7][5] = "-";
-//     bfTest.bField[5][5] = "-"; 
-//     const testCoords = ["7-5" , "5-5"];
+//     const testCoords = ["5-6" , "4-5"];
     
-//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(true);
+//     expect(bfTest.isCoordsFree(testCoords)).toBe(true);
 // });
 
-// test("Coords are not free " , () => { 
+// test("Get the free coordinates " , () => { 
 //     const bfTest = new Battle_Field(8 , 8)
-//     bfTest.bField[7][5] = "X";
-//     bfTest.bField[5][5] = "-"; 
-//     const testCoords = ["7-5" , "5-5"];
+//     const testCoords = ["5-9" , "4-5"];
     
-//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(false);
-
+//     expect(bfTest.isCoordsFree(testCoords)).toBe(false);
 // });
 
-// test("Coords are not free " , () => { 
-//     const bfTest = new Battle_Field(8 , 8)
-//     const testCoords = ["8-5" , "5-5"];
+test("Coords are overflowing " , () => { 
+    const bfTest = new Battle_Field(8 , 8)
+    const testCoords = ["5-6" , "4-5"];
     
-//     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(false);
-
-// });
-//  Testing clearBoard function 
-// test("battleField is clear", () => { 
-//     const bfTest = new Battle_Field(8,8);
-//     bfTest.bField[4][5] = 'X-X'; 
-//     bfTest.bField[7][7] = "X-X";
-//     bfTest.ships.shipsAfloat = 5; 
-//     bfTest.attackCords = [5,5]
-//     bfTest.clearBoard();
-//     expect(bfTest.bField[4][5] && bfTest.bField[7][7]).toBe('-');
-//     expect(bfTest.ships.shipsAfloat).toBe(0);
-//     expect(bfTest.attackCords).toHaveLength(0);
-// })
-
-test("Surrounding cells are blocked" , () => { 
-    const bfTest = new Battle_Field(8 ,8); 
-    bfTest.bField[1][1] = 'S';
-    expect(bfTest.bField[2,2]).toContain('X');
-})
-
-
-
+    expect(bfTest.isCoordsOverflowing(testCoords)).toBe(false);
+});
 
 
