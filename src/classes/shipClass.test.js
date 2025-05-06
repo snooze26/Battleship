@@ -1,5 +1,5 @@
 
-import * as Ships from "./shipClass.js";
+const Ships = require('./shipClass.js')
 
 test('Add 1 hit to the ships hit' , () => {
     const testC = new Ships.Carrier(); 

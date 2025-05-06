@@ -1,4 +1,4 @@
-export class Ship {
+class Ship {
     constructor(type, length, hits=0,sunk=false) {
         this.type = type;
         this.length = length; 
@@ -61,3 +61,5 @@ testC.hits = 5;
 const shipIs = testC.isSunk();
 console.log(shipIs)
 console.log(testC.hits)
+
+module.exports = Ship

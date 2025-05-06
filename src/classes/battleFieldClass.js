@@ -1,7 +1,4 @@
-import { error } from "console";
-import { validateHeaderName } from "http";
-
-export class Battle_Field { 
+class Battle_Field { 
     bField; 
     attackCords = [];
     ships = {
@@ -87,25 +84,34 @@ export class Battle_Field {
     }
 
     retrieveSurroundingBlockCells(coords) { 
-        const surroundCellIntervals = [
-            [-1, -1],
-            [-1, 0],
-            [-1, 1],
-            [0, -1],
-            [0, 1],
-            [1, -1],
-            [1, 0],
-            [1, 1],
+        const surroundingCells = [
+            [-1, -1], [-1, 0],[-1, 1],
+            [0, -1],          [0, 1],
+            [1, -1],  [1, 0], [1, 1],
         ];
+        
+        let x , y; 
+        if(typeof coords === 'string') { 
+            const coord = coords.split('-'); 
+            x = parseInt(coord[0].trim(), 10);
+            y = parseInt(coord[1].trim(), 10);    
+        }else {
+            x = coords[0];
+            y = coords[1]
+        }
 
-        const possibleCoords = surroundCellIntervals.every(coord => {
-            const [xNumber , yNumber] = coord.split("-").map(Number);            
-            if(!this.validLocation(x , y)) return false; 
+        const validSurroundingCoords = [];
 
-            
-        })
+        for(const [dx , dy] of surroundingCells) {
+            const newX = x + dx; 
+            const newY = y + dy; 
+
+            if(this.validLocation([newX , newY])){
+                validSurroundingCoords.push(newX , newY); 
+            }
+        }
+        return validSurroundingCoords;     
     }
-
 }
 
 
@@ -113,3 +119,5 @@ export class Battle_Field {
 // const input = '10-10';
 
 // console.log(testBfieldd.getCoords(input));
+
+module.exports = Battle_Field; 
