@@ -101,7 +101,7 @@ allShipsSunk() { DONE********
     return shipAfloat equal to 0 
 }
 
-clearBoard() { 
+clearBoard() { DONE
     reassign battleField to a new battleField using the createBoard function with the # of rows and cols
     set attackCoords to an empty array 
     reset the ships object shipAfloat proeprty to 0 
@@ -150,7 +150,7 @@ surroundShipWithBlockedCells(shipCoords) {
     return acc (all blocked cell coords)
 }
 
-isCoordsFree(coords) { 
+isCoordsFree(coords) { DONE 
     define freeCoords by calling filter on coords 
         filter criteria:
             for each coordinate 
@@ -161,15 +161,14 @@ isCoordsFree(coords) {
         return true if freeCoords.length is equal to coords.length         
 }
 
-isCoordsOverflowing(coords) { 
-    define validCoords by calling filter on coords 
-        filter criteria: 
-            for each coordinate
-                split the coords 
-                assing x and y to the split coords 
-                return true if x and y coords are a valid cell 
-        return true if validCoords length is equal to coords' length 
+isCoordsFreeAndValid(coords){ DONE
+    return 
+        for every coord in coords 
+            assign an array containng x and y to coord split
+             convert each string to a number
+            return whether [x , y] is valid and bField [x][y] is strictly equal to '-'
 }
+
 
 
 

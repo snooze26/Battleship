@@ -73,14 +73,40 @@ export class Battle_Field {
         return freeCoords.length === coords.length;
     }
 
-    isCoordsFreeAndValid(coords) {
-            return coords.every(coord => {
-                const [x , y] = coord.split('-').map(Number);
-                return this.validLocation([x , y]) && this.bField[x][y] === '='; 
-            });
-    };
-}
+    isCoordsFreeAndValid(coords) { 
+        return coords.every(coord => {
+            const [x , y] = coord.split('-').map(Number);
+            return this.validLocation([x ,y]) && this.bField[x][y] === '-'; 
+        })
+    }
 
+    clearBoard() { 
+        this.bField = this.createBattleField(this.row , this.col);
+        this.attackCords = []; 
+        this.ships.shipsAfloat = 0;
+    }
+
+    retrieveSurroundingBlockCells(coords) { 
+        const surroundCellIntervals = [
+            [-1, -1],
+            [-1, 0],
+            [-1, 1],
+            [0, -1],
+            [0, 1],
+            [1, -1],
+            [1, 0],
+            [1, 1],
+        ];
+
+        const possibleCoords = surroundCellIntervals.every(coord => {
+            const [xNumber , yNumber] = coord.split("-").map(Number);            
+            if(!this.validLocation(x , y)) return false; 
+
+            
+        })
+    }
+
+}
 
 
 // const testBfieldd = new Battle_Field(10, 10); 

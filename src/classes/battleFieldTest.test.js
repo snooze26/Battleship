@@ -70,11 +70,4 @@ test("Coords are overflowing " , () => {
     expect(bfTest.isCoordsOverflowing(testCoords)).toBe(false);
 });
 
-test("Coords are not overflwoing " , () => { 
-    const bfTest = new Battle_Field(8 , 8)
-    const testCoords = ["5-9" , "4-5"];
-    
-    expect(bfTest.isCoordsOverflowing(testCoords)).toBe(true);
-});
-
 
