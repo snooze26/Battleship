@@ -103,7 +103,7 @@ const Ships = require('./shipClass.js')
 //     expect(bfTest.attackCords).toHaveLength(0);
 // })
 
-test("Surrounding cells are blocked" , () => { 
+test("Get surrounding cells" , () => { 
     const bfTest = new Battle_Field(8 ,8); 
     const testCoords = [4 , 4]; 
     const expected = [
@@ -115,5 +115,6 @@ test("Surrounding cells are blocked" , () => {
     expect(res).toEqual(expect.arrayContaining(expected));
 })
 
+test("Surrounding cells are blocked ")
 
 
