@@ -109,7 +109,7 @@ howManyShips() { DONEEEEEE
     return shipsAfloat
 }
 
-retrieveSurroundingCells(coords) { 
+retrieveSurroundingCells(coords) { DONE
     define the 8 directions around a cell using shipsDirections
     create a array called shipMoves and assign it to empty array
 
@@ -133,15 +133,16 @@ retrieveSurroundingCells(coords) {
     return newShipMoves
 }
 
-surroundShipWithBlockedCells(shipCoords) { 
-    define surroundingCells by calling retrieveSurroundingCells with shipCoords as its input 
-    create an empty array called acc for the accumlator 
-    for each coord in surroundingCells 
-        split coord into x and y 
-        convert x and y into numbers 
-        Set the cell at x and y on the battleField to "X" marking it as blocked 
-        add coord to acc array 
-    return acc (all blocked cell coords)
+blockOffShip(coords) { 
+    create surroundingCells and assign the retrieved coords to it 
+    create a empty array called blockedCells 
+    
+    for each cell in surroundingCells   
+        split the cell by string into x/y 
+        set x/y to equal "X"
+        add the cell to the blockedCells array 
+    
+    return blockedCells 
 }
 
 isCoordsFree(coords) { DONE 
