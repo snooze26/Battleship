@@ -84,12 +84,13 @@ class Battle_Field {
     }
 
     retrieveSurroundingBlockCells(coords) { 
+        // create surround cells intervals 
         const surroundingCells = [
             [-1, -1], [-1, 0],[-1, 1],
             [0, -1],          [0, 1],
             [1, -1],  [1, 0], [1, 1],
         ];
-        
+        // create and assign x/y coords 
         let x , y; 
         if(typeof coords === 'string') { 
             const coord = coords.split('-'); 
@@ -100,16 +101,21 @@ class Battle_Field {
             y = coords[1]
         }
 
+        // create to take in valid coords 
         const validSurroundingCoords = [];
 
+        // adding the intervals to the x and y coordinates 
         for(const [dx , dy] of surroundingCells) {
             const newX = x + dx; 
             const newY = y + dy; 
-
+            //checking if the surrounding coords are valid 
             if(this.validLocation([newX , newY])){
+                //add surrunding coords to valid coords array 
                 validSurroundingCoords.push([newX , newY]); 
             }
         }
+
+        //return the array
         return validSurroundingCoords;     
     }
 }
