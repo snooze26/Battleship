@@ -71,25 +71,19 @@ placeShip(coords, ship) {
 }
 
 recieveAttack(input) { 
-    check if the input coords are valid if false return (making sure input coordinates are valid)
-    split the coordinates into a variable called "coords" (collecting the inputs and seperating from punctuations)
-    check if the coords return a valid cell, if false then return function (checking if the coordinate is a valid space)
-    check if the coords are in the attackCoords array if true then return (checking if the coords have already been hit)
-    create a variable cell that is retrieving the coordinates using x & y . (retrieves cell contents: the ship object)
-    add coordinates to the attackCoords array; (adds the cell to the attackcoords array making it not hittable anymore)
-    check if the coordinates have already been attacked 
-        mark the ship if it has been hit 
-        assign the ship to the cell and hit the ship 
-            if ship has been sunk 
-                remove one ship from the board and make the cell content "X"
-                // add a identifier property to the ship class and a shipDamage property 
-                assign the ship's blockedCells using it's identifier to a shipsDamage variable 
-                push the blockedCells into the attackCoords variable 
-                return the ship with the status now as sunk and damage is assigned to shipsDamage 
-        ship has been hit but not sunk. 
-        mark the cell as "X"
-        return status as hit and damage is assigned to shipsDamage 
-    ship has not been hit. return the status as miss and damage as null
+    Define surroundingCells as an array of 8 direction pairs 
+    check if coords are a string 
+    if true then split coords by the "-" to get x an y values
+        convert x and y to numbers 
+    else 
+        assign x to the 1st element in coords and y to the second 
+    create an empty array called ValidSurroundingCoords 
+    for each dx/dy of surroundingCells 
+        newX is x + dx 
+        newY is y + dy 
+    if the location is valid for [newX , newY] 
+        add newX and newY to ValidSurroundingCoords
+    return ValidSurroundingCoords
     
 }
 
@@ -115,7 +109,7 @@ howManyShips() { DONEEEEEE
     return shipsAfloat
 }
 
-retrieveSurroundingCells(coords) { 
+retrieveSurroundingCells(coords) { DONE
     define the 8 directions around a cell using shipsDirections
     create a array called shipMoves and assign it to empty array
 
@@ -139,15 +133,16 @@ retrieveSurroundingCells(coords) {
     return newShipMoves
 }
 
-surroundShipWithBlockedCells(shipCoords) { 
-    define surroundingCells by calling retrieveSurroundingCells with shipCoords as its input 
-    create an empty array called acc for the accumlator 
-    for each coord in surroundingCells 
-        split coord into x and y 
-        convert x and y into numbers 
-        Set the cell at x and y on the battleField to "X" marking it as blocked 
-        add coord to acc array 
-    return acc (all blocked cell coords)
+blockOffShip(coords) { 
+    create surroundingCells and assign the retrieved coords to it 
+    create a empty array called blockedCells 
+    
+    for each cell in surroundingCells   
+        split the cell by string into x/y 
+        set x/y to equal "X"
+        add the cell to the blockedCells array 
+    
+    return blockedCells 
 }
 
 isCoordsFree(coords) { DONE 

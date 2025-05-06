@@ -1,7 +1,4 @@
-import { error } from "console";
-import { validateHeaderName } from "http";
-
-export class Battle_Field { 
+class Battle_Field { 
     bField; 
     attackCords = [];
     ships = {
@@ -87,25 +84,64 @@ export class Battle_Field {
     }
 
     retrieveSurroundingBlockCells(coords) { 
-        const surroundCellIntervals = [
-            [-1, -1],
-            [-1, 0],
-            [-1, 1],
-            [0, -1],
-            [0, 1],
-            [1, -1],
-            [1, 0],
-            [1, 1],
+        // create surround cells intervals 
+        const surroundingCells = [
+            [-1, -1], [-1, 0],[-1, 1],
+            [0, -1],          [0, 1],
+            [1, -1],  [1, 0], [1, 1],
         ];
+        // create and assign x/y coords 
+        let x , y; 
+        if(typeof coords === 'string') { 
+            const coord = coords.split('-'); 
+            x = parseInt(coord[0], 10);
+            y = parseInt(coord[1], 10);    
+        }else {
+            x = coords[0];
+            y = coords[1]
+        }
 
-        const possibleCoords = surroundCellIntervals.every(coord => {
-            const [xNumber , yNumber] = coord.split("-").map(Number);            
-            if(!this.validLocation(x , y)) return false; 
+        // create to take in valid coords 
+        const validSurroundingCoords = [];
 
-            
-        })
+        // adding the intervals to the x and y coordinates 
+        for(const [dx , dy] of surroundingCells) {
+            const newX = x + dx; 
+            const newY = y + dy; 
+            //checking if the surrounding coords are valid 
+            if(this.validLocation([newX , newY])){
+                //add surrunding coords to valid coords array 
+                validSurroundingCoords.push([newX , newY]); 
+            }
+        }
+
+        //return the array
+        return validSurroundingCoords;     
     }
 
+    blockOffShip(coords) {
+        // get surorunding cells 
+        const surroundingCells = this.retrieveSurroundingBlockCells(coords); 
+        const blockedCells = []; 
+
+        for(const cell of surroundingCells) { 
+            let x , y; 
+            // if cell is a string convert it to an array of numbers 
+            if(typeof cell === 'string') { 
+                const coord = coords.split('-'); 
+                x = parseInt(coord[0], 10);
+                y = parseInt(coord[1], 10);    
+            }else {
+                // if cell is array already just assign 
+                [x , y] = cell; 
+            }
+
+            this.bField[x][y] = "X"; 
+            
+            blockedCells.push([x,y])
+        }
+        return blockedCells;
+    }
 }
 
 
@@ -113,3 +149,5 @@ export class Battle_Field {
 // const input = '10-10';
 
 // console.log(testBfieldd.getCoords(input));
+
+module.exports = Battle_Field; 
