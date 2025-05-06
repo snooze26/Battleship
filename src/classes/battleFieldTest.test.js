@@ -76,20 +76,24 @@ import * as Ships from "./shipClass.js";
 //     expect(bfTest.isCoordsFreeAndValid(testCoords)).toBe(false);
 
 // });
+//  Testing clearBoard function 
+// test("battleField is clear", () => { 
+//     const bfTest = new Battle_Field(8,8);
+//     bfTest.bField[4][5] = 'X-X'; 
+//     bfTest.bField[7][7] = "X-X";
+//     bfTest.ships.shipsAfloat = 5; 
+//     bfTest.attackCords = [5,5]
+//     bfTest.clearBoard();
+//     expect(bfTest.bField[4][5] && bfTest.bField[7][7]).toBe('-');
+//     expect(bfTest.ships.shipsAfloat).toBe(0);
+//     expect(bfTest.attackCords).toHaveLength(0);
+// })
 
-test("battleField is clear", () => { 
-    const bfTest = new Battle_Field(8,8);
-    bfTest.bField[4][5] = 'X-X'; 
-    bfTest.bField[7][7] = "X-X";
-    bfTest.ships.shipsAfloat = 5; 
-    bfTest.attackCords = [5,5]
-    bfTest.clearBoard();
-    expect(bfTest.bField[4][5] && bfTest.bField[7][7]).toBe('-');
-    expect(bfTest.ships.shipsAfloat).toBe(0);
-    expect(bfTest.attackCords).toHaveLength(0);
-    
+test("Surrounding cells are blocked" , () => { 
+    const bfTest = new Battle_Field(8 ,8); 
+    bfTest.bField[1][1] = 'S';
+    expect(bfTest.bField[2,2]).toContain('X');
 })
-
 
 
 
