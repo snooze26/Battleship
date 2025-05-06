@@ -94,8 +94,8 @@ class Battle_Field {
         let x , y; 
         if(typeof coords === 'string') { 
             const coord = coords.split('-'); 
-            x = parseInt(coord[0].trim(), 10);
-            y = parseInt(coord[1].trim(), 10);    
+            x = parseInt(coord[0], 10);
+            y = parseInt(coord[1], 10);    
         }else {
             x = coords[0];
             y = coords[1]
@@ -117,6 +117,30 @@ class Battle_Field {
 
         //return the array
         return validSurroundingCoords;     
+    }
+
+    blockOffShip(coords) {
+        // get surorunding cells 
+        const surroundingCells = this.retrieveSurroundingBlockCells(coords); 
+        const blockedCells = []; 
+
+        for(const cell of surroundingCells) { 
+            let x , y; 
+            // if cell is a string convert it to an array of numbers 
+            if(typeof cell === 'string') { 
+                const coord = coords.split('-'); 
+                x = parseInt(coord[0], 10);
+                y = parseInt(coord[1], 10);    
+            }else {
+                // if cell is array already just assign 
+                [x , y] = cell; 
+            }
+
+            this.bField[x][y] = "X"; 
+            
+            blockedCells.push([x,y])
+        }
+        return blockedCells;
     }
 }
 

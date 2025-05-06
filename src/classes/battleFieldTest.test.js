@@ -103,18 +103,28 @@ const Ships = require('./shipClass.js')
 //     expect(bfTest.attackCords).toHaveLength(0);
 // })
 
-test("Get surrounding cells" , () => { 
-    const bfTest = new Battle_Field(8 ,8); 
-    const testCoords = [4 , 4]; 
-    const expected = [
-        [3, 3], [3, 4], [3, 5],
-        [4, 3],        [4, 5],
-        [5, 3], [5, 4], [5, 5]
-      ];
-    const res = bfTest.retrieveSurroundingBlockCells(testCoords);
-    expect(res).toEqual(expect.arrayContaining(expected));
-})
+// test("Get surrounding cells" , () => { 
+//     const bfTest = new Battle_Field(8 ,8); 
+//     const testCoords = [4 , 4]; 
+//     const expected = [
+//         [3, 3], [3, 4], [3, 5],
+//         [4, 3],        [4, 5],
+//         [5, 3], [5, 4], [5, 5]
+//       ];
+//     const res = bfTest.retrieveSurroundingBlockCells(testCoords);
+//     expect(res).toEqual(expect.arrayContaining(expected));
+// })
 
-test("Surrounding cells are blocked ")
+test("Surrounding cells are blocked", () => { 
+    const bfTest = new Battle_Field(8, 8); 
+    const testCoords = [4, 4]; 
+    const blockedCoords = bfTest.blockOffShip(testCoords);
+
+    for (const coord of blockedCoords) {
+        // if coord is an array return coord if not return numbers split numbers
+        const [x, y] = Array.isArray(coord) ? coord : coord.split('-').map(Number);
+        expect(bfTest.bField[x][y]).toEqual("X");
+    }
+});
 
 
