@@ -107,7 +107,7 @@ class Battle_Field {
             const newY = y + dy; 
 
             if(this.validLocation([newX , newY])){
-                validSurroundingCoords.push(newX , newY); 
+                validSurroundingCoords.push([newX , newY]); 
             }
         }
         return validSurroundingCoords;     
