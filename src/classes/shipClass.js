@@ -12,7 +12,6 @@ class Ship {
 
     isSunk() { 
         if(this.hits == this.length) { 
-            console.log("ships has shunk")
             return true
         }
         return false
@@ -20,31 +19,31 @@ class Ship {
 
 }
 
-export class Carrier extends Ship { 
+ class Carrier extends Ship { 
     constructor() {
         super("Carrier" , 5)
     }
 } 
 
-export class Battleship extends Ship { 
+ class Battleship extends Ship { 
     constructor() {
         super("Battleship" , 4)
     }
 } 
 
-export class Destroyer extends Ship { 
+ class Destroyer extends Ship { 
     constructor() {
         super("Destroyer" , 3)
     }
 } 
 
-export class Submarine extends Ship { 
+ class Submarine extends Ship { 
     constructor() {
         super("Submarine" , 3)
     }
 } 
 
-export class Patrol extends Ship { 
+ class Patrol extends Ship { 
     constructor() {
         super("Patrol" , 2)
     }
@@ -59,7 +58,12 @@ const testP = new Patrol();
 testC.hits = 5; 
 
 const shipIs = testC.isSunk();
-console.log(shipIs)
-console.log(testC.hits)
 
-module.exports = Ship
+module.exports = {
+    Ship, 
+    Carrier,
+    Battleship, 
+    Destroyer, 
+    Submarine,
+    Patrol
+}
