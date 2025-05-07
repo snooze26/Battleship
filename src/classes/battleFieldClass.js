@@ -1,3 +1,5 @@
+const Ships = require('./shipClass.js')
+
 class Battle_Field { 
     bField; 
     attackCords = [];
@@ -142,12 +144,24 @@ class Battle_Field {
         }
         return blockedCells;
     }
+
+    placeShip(coords , ship){ 
+        if(!coords.length === ship.length){ 
+            console.error("Please enter a valid location for the selected ship.");
+            return false; 
+        }
+
+        
+    }
 }
 
 
-// const testBfieldd = new Battle_Field(10, 10); 
-// const input = '10-10';
+const testBfieldd = new Battle_Field(10, 10); 
+const testCoords = [4 , 4]; 
+const testShip = new Ships.Carrier(); 
 
-// console.log(testBfieldd.getCoords(input));
+console.log(testBfieldd.placeShip(testShip , testCoords));
+
+
 
 module.exports = Battle_Field; 
