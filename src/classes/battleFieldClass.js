@@ -74,7 +74,15 @@ class Battle_Field {
 
     isCoordsFreeAndValid(coords) { 
         return coords.every(coord => {
-            const [x , y] = coord.split('-').map(Number);
+            let x , y
+
+            if(typeof coord === 'string') { 
+            [x , y] = coord.split("-").map(Number);
+            }else if(Array.isArray(coord)) { 
+                [x , y] = coord; 
+            } else { 
+                return false; 
+            }
             return this.validLocation([x ,y]) && this.bField[x][y] === '-'; 
         })
     }
@@ -146,9 +154,14 @@ class Battle_Field {
     }
 
     placeShip(coords , ship){ 
-        if(!coords.length === ship.length){ 
-            console.error("Please enter a valid location for the selected ship.");
+        if(coords.length !== ship.length){ 
+            console.error(`The ${ship.type} does not fit there.`);
             return false; 
+        }; 
+
+        if(!this.isCoordsFreeAndValid(coords)) {
+            console.error("Please enter a valid location.")
+            return false 
         }
 
         
@@ -157,10 +170,12 @@ class Battle_Field {
 
 
 const testBfieldd = new Battle_Field(10, 10); 
-const testCoords = [4 , 4]; 
+const testCoords = [
+    [4-3] , [4-4] , [4-5] , [4-6] , [4-7]
+]
 const testShip = new Ships.Carrier(); 
 
-console.log(testBfieldd.placeShip(testShip , testCoords));
+console.log(testBfieldd.placeShip(testCoords , testShip));
 
 
 
