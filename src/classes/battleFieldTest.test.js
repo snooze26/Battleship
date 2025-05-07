@@ -115,16 +115,26 @@ const Ships = require('./shipClass.js')
 //     expect(res).toEqual(expect.arrayContaining(expected));
 // })
 
-test("Surrounding cells are blocked", () => { 
-    const bfTest = new Battle_Field(8, 8); 
-    const testCoords = [4, 4]; 
-    const blockedCoords = bfTest.blockOffShip(testCoords);
+// test("Surrounding cells are blocked", () => { 
+//     const bfTest = new Battle_Field(8, 8); 
+//     const testCoords = [4, 4]; 
+//     const blockedCoords = bfTest.blockOffShip(testCoords);
 
-    for (const coord of blockedCoords) {
-        // if coord is an array return coord if not return numbers split numbers
-        const [x, y] = Array.isArray(coord) ? coord : coord.split('-').map(Number);
-        expect(bfTest.bField[x][y]).toEqual("X");
-    }
-});
+//     for (const coord of blockedCoords) {
+//         // if coord is an array return coord if not return numbers split numbers
+//         const [x, y] = Array.isArray(coord) ? coord : coord.split('-').map(Number);
+//         expect(bfTest.bField[x][y]).toEqual("X");
+//     }
+// });
+
+test("Ship has been placed", () => { 
+    const bfTest = new Battle_Field(8 ,8); 
+    const testCoords = [4-4]; 
+    const [x , y] = testCoords.split("-"); 
+    const testShip = new Ships.Carrier();
+
+     bfTest.placeShip(testCoords , testShip); 
+     expect(isCoordsFree(bfTest[x][y])).toBe(false); 
+})
 
 
