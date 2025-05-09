@@ -128,13 +128,19 @@ const Ships = require('./shipClass.js')
 // });
 
 test("Ship has been placed", () => { 
-    const bfTest = new Battle_Field(8 ,8); 
-    const testCoords = [4-4]; 
-    const [x , y] = testCoords.split("-"); 
+    const bfTest = new Battle_Field(8 , 8); 
+    const testCoords = [[4 ,3] , [4 , 4] , [4 ,5] , [4 , 6] , [4 ,7]]; 
+    const [x , y] = testCoords[0]; 
     const testShip = new Ships.Carrier();
+    const blockedCoords = bfTest.blockOffShip(testCoords);
 
-     bfTest.placeShip(testCoords , testShip); 
-     expect(isCoordsFree(bfTest[x][y])).toBe(false); 
-})
+    bfTest.placeShip(testCoords , testShip); 
+     expect(bfTest.bField[x][y]).toEqual(testShip.id); 
+     expect(bfTest.ships.shipsAfloat).toEqual(1); 
+     expect(bfTest.ships[testShip.id].shipCoords).toEqual(testCoords);
+     expect(bfTest.ships[testShip.id].blockedCells).toEqual(blockedCoords);
+    });
+
+
 
 

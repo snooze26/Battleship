@@ -154,29 +154,32 @@ class Battle_Field {
     }
 
     placeShip(coords , ship){ 
+        // check if coords length is equal to the length of ship 
         if(coords.length !== ship.length){ 
             console.error(`The ${ship.type} does not fit there.`);
             return false; 
         }; 
-
+        //check if the coords are free and valid 
         if(!this.isCoordsFreeAndValid(coords)) {
-            console.error("Please enter a valid location.")
+            console.error("Please enter a valid location");
             return false 
         }
+        // place ship on board 
+        for (const [x , y] of coords) { 
+            this.bField[x][y] = ship.id;
+        }
 
+        let blockedCells = []; 
         
-    }
+        // update ship tracking 
+        this.ships.shipsAfloat++ 
+        this.ships[ship.id] = {
+            shipCoords: coords, 
+            blockedCells : blockedCells
+        }
+
+        return {shipsCoords: coords , blockedCells}; 
+    }; 
 }
-
-
-const testBfieldd = new Battle_Field(10, 10); 
-const testCoords = [
-    [4-3] , [4-4] , [4-5] , [4-6] , [4-7]
-]
-const testShip = new Ships.Carrier(); 
-
-console.log(testBfieldd.placeShip(testCoords , testShip));
-
-
 
 module.exports = Battle_Field; 
