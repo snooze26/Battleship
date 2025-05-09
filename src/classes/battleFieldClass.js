@@ -165,12 +165,16 @@ class Battle_Field {
             return false 
         }
         // place ship on board 
+        //block of surround cells 
+        let blockedCells = []; 
+        for (const coord of coords) { 
+            const cells = this.blockOffShip(coord);
+            blockedCells.push(...cells); 
+        }
+
         for (const [x , y] of coords) { 
             this.bField[x][y] = ship.id;
         }
-
-        let blockedCells = []; 
-        
         // update ship tracking 
         this.ships.shipsAfloat++ 
         this.ships[ship.id] = {
@@ -178,7 +182,7 @@ class Battle_Field {
             blockedCells : blockedCells
         }
 
-        return {shipsCoords: coords , blockedCells}; 
+        return {shipsCoords: coords , blockedCells: blockedCells}; 
     }; 
 }
 
