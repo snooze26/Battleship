@@ -4,15 +4,14 @@ create a class called battleField
     create a ships object that contains a property for the ships on the board "shipsAfloat"
 
 
-DONEDONEDONEDONEDONEDONEDONEDONEDONE
-constructor(row , col){ 
+constructor(row , col){ DONE
     set row and col to the inputed values 
     run the createBattleField on row and col properties with bField
 }
 ********************
 
-DONEDONEDONEDONEDONEDONEDONEDONEDONE
-createBattleField(rows, col) { 
+
+createBattleField(rows, col) {DONE 
     return
         create a empty array of arrays named with the row value
             make array mappable by spreading these elements
@@ -21,7 +20,7 @@ createBattleField(rows, col) {
 }
 ********************
 
-validLocation(position) { 
+validLocation(position) { DONE
     create boardLimit and assign it to 8 
     create an object that takes in x ,y variables assign poistion to it
     check if x is greater than or equal to 0 and if x is less than board limit 
@@ -30,10 +29,9 @@ validLocation(position) {
     else if false return false 
 }
 
-** done 
 
 
-getCell(input) { DONE **********
+getCell(input) { DONE
     check if the input type is not a string throw error
     split the coordinates into a variable called "coords" 
     check if the length of coords equal 2 
@@ -45,7 +43,7 @@ getCell(input) { DONE **********
     return both numbers in an array
 }
 
-placeShip(coords, ship) { 
+placeShip(coords, ship) { DONE 
     check if # of coords is equal to ship's length if false
          log error message 
          return false 
@@ -78,7 +76,7 @@ placeShip(coords, ship) {
         shipsCoords is defined as the coords 
         blockedCells is assigned to blockedcells 
     return the shipsCoords: coords and blockedCells 
-    
+
 }
 
 recieveAttack(input) { 
@@ -104,7 +102,7 @@ recieveAttack(input) {
     
 }
 
-allShipsSunk() { DONE********
+allShipsSunk() { DONE
     return shipAfloat equal to 0 
 }
 
@@ -118,11 +116,11 @@ getbattleField() { DONE
     return the battleField 
  }
 
-howManyShips() { DONEEEEEE
+howManyShips() { DONE
     return shipsAfloat
 }
 
-retrieveSurroundingCells(coords) { 
+retrieveSurroundingCells(coords) { DONE 
     define the 8 directions around a cell using shipsDirections
     create a array called shipMoves and assign it to empty array
 
@@ -146,7 +144,7 @@ retrieveSurroundingCells(coords) {
     return newShipMoves
 }
 
-surroundShipWithBlockedCells(shipCoords) { 
+blockOffShip(shipCoords) { DONE
     define surroundingCells by calling retrieveSurroundingCells with shipCoords as its input 
     create an empty array called acc for the accumlator 
     for each coord in surroundingCells 
