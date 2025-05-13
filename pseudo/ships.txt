@@ -21,3 +21,8 @@ Create a function that calculates if a ship is sunk based on the length and numb
         create popup alert that ship is sunk 
     }
 
+Create a function that calculates a ship's damage return status after each hit 
+    shipsStatus() {
+        
+    }
+
