@@ -19,6 +19,13 @@ class Ship {
         return false
     }
 
+    getStatus() { 
+        const percentNum = this.length - this.hits; 
+        const res = percentNum / this.length
+        const percentage = (res * 100).toFixed(2);
+        return `${percentage}% health`; 
+    }
+
 }
 
  class Carrier extends Ship { 
@@ -57,9 +64,10 @@ const testD = new Destroyer();
 const testS = new Submarine(); 
 const testP = new Patrol(); 
 
-testC.hits = 5; 
+testC.hits = 1; 
 
-const shipIs = testC.isSunk();
+const shipStatus = testC.getStatus(); 
+console.log(shipStatus);
 
 module.exports = {
     Ship, 
