@@ -184,6 +184,35 @@ class Battle_Field {
 
         return {shipsCoords: coords , blockedCells: blockedCells}; 
     }; 
+
+    recieveAttack(coords){
+        // check if the inputed coords are available 
+        console.log(this.validLocation(coords))
+        if(!this.validLocation(coords)) return false;
+        // assigning x and y to coords 
+        const [x , y] = coords 
+        const coordKey =  `${x}-${y}`; 
+        //check if the cell has been attacked already 
+        if(this.attackCords.includes(coordKey)) return false; 
+        //register attack 
+        this.attackCords.push(coordKey); 
+        
+        const cell = this.bField[x][y];
+
+        if(cell === '-' || cell === 'X') { 
+            this.bField[x][y] = "M";
+            return "Enemey avoided contact."
+        }
+
+        return "You made it pass "        
+
+    }
 }
 
+
 module.exports = Battle_Field; 
+
+const bfTest = new Battle_Field(8 , 8); 
+const testShip = new Ships.Carrier();
+
+console.log(bfTest.recieveAttack([4, 3]));
