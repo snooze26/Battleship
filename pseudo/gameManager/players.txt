@@ -1,0 +1,31 @@
+Create a Player Class {
+    constructors (name, difficulty=null);
+    this.Name equals name    
+    this.difficulty = difficulty;
+}
+
+
+extend player class and create HumanPlayer {
+    constructors are super (name , this.board = createBattleField())
+    
+    takeTurn(opponent) {
+        assign move to the user's click
+        call recieveAttack on the opponent.board with move as the input value 
+    }
+}
+
+extend player class and create ComputerPlayer { 
+    constructors are super (`Computer ({difficulty})` 
+                             difficulty=difficulty
+                             board = createGameBoard())
+
+    takeTurn(opponent) {
+        let move
+        if the difficulty is easy define move as the randomMove function on the opponents board 
+        else define move as the getSmartMove function called on the opponents board 
+        call recieveAttack on the opponent.board with move as the input value 
+}
+}
+
+
+

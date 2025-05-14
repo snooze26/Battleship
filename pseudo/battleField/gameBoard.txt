@@ -1,0 +1,180 @@
+create a class called battleField
+    create battleField variable globally 
+    create an array for the attackCoords
+    create a ships object that contains a property for the ships on the board "shipsAfloat"
+
+
+constructor(row , col){ DONE
+    set row and col to the inputed values 
+    run the createBattleField on row and col properties with bField
+}
+********************
+
+
+createBattleField(rows, col) {DONE 
+    return
+        create a empty array of arrays named with the row value
+            make array mappable by spreading these elements
+            map through the rows and enter an array of columns 
+            fill these columns with "-" as the placeholder for the board 
+}
+********************
+
+validLocation(position) { DONE
+    create boardLimit and assign it to 8 
+    create an object that takes in x ,y variables assign poistion to it
+    check if x is greater than or equal to 0 and if x is less than board limit 
+    check if y is greater than or equal to 0 and if y is less than board limit 
+        if true, return true
+    else if false return false 
+}
+
+
+
+getCell(input) { DONE
+    check if the input type is not a string throw error
+    split the coordinates into a variable called "coords" 
+    check if the length of coords equal 2 
+        if false then throw a error for the valid format 
+
+    parseInt both numbers and trim the white space with a radix of 10 
+
+    check if both numbers are integers if not then throw errors 
+    return both numbers in an array
+}
+
+placeShip(coords, ship) { DONE 
+    check if # of coords is equal to ship's length if false
+         log error message 
+         return false 
+    check if coordsd are valid and free if not then 
+         log error message 
+         return false 
+
+    for each [x , y] of coords 
+        set battleField's x and y to ship's id 
+
+    increment shipAfloat    
+
+    create a empty array called blockedCells 
+
+    (add ship to the board)
+    for each coord of coords 
+        assign the board's coords to the the ship.id 
+    
+
+    let a array called blockedCells 
+
+    (block of the surrounding cells)
+    for the coords of coordinates 
+        coord blockedShip is assigned to const blocked 
+        add blocked to the blockedCells array 
+
+    (update tracking for ship) 
+    increment shipsAfloat 
+    add properties to ships.[ships.id]
+        shipsCoords is defined as the coords 
+        blockedCells is assigned to blockedcells 
+    return the shipsCoords: coords and blockedCells 
+
+}
+
+recieveAttack(coords) { 
+    call isCoordsFreeAndValid on the inputed coords 
+    check if the coords are in the attackCoords array if true then return (checking if the coords have already been hit)
+    create a variable cell that is retrieving the coordinates using x & y . (retrieves cell contents: the ship object)
+    add coordinates to the attackCoords array; (adds the cell to the attackcoords array making it not hittable anymore)
+    check and see if the ship has been hit 
+        if cell === '-' or 'X' 
+            assign the bField to 'M" 
+    if there is a hit 
+        create and assign shipId to cell 
+        create and assign ship to the ships[shipId]
+        hit ship 
+        assign the bfTeild coords to "H"
+    check if the ship is sunk 
+        if true -- shipAfloat
+        return '{Ship.Type} Destroyed'
+
+    return "{Shp.Type} has been hit" 
+
+    ship has not been hit. return the status as miss and damage as null
+    
+}
+
+allShipsSunk() { DONE
+    return shipAfloat equal to 0 
+}
+
+clearBoard() { DONE
+    reassign battleField to a new battleField using the createBoard function with the # of rows and cols
+    set attackCoords to an empty array 
+    reset the ships object shipAfloat proeprty to 0 
+}
+
+getbattleField() { DONE 
+    return the battleField 
+ }
+
+howManyShips() { DONE
+    return shipsAfloat
+}
+
+retrieveSurroundingCells(coords) { DONE 
+    define the 8 directions around a cell using shipsDirections
+    create a array called shipMoves and assign it to empty array
+
+    for each offset(x and y) in shipsDirections
+        for each coord in coordinates 
+        split coord into x and y parts 
+        convert x and y to numbers 
+
+     calculate newX = x + offset of x 
+        newY = x + offset of y 
+
+        if newX/newY are not valid cells 
+            skip to next coord
+        if the cell at newX/Y is not "X" or "-"
+            skip to next coord 
+        
+        Add newX/Y as a string to shipMoves 
+    
+    define newShipMoves to remove duplicate coords from shipMoves
+
+    return newShipMoves
+}
+
+blockOffShip(shipCoords) { DONE
+    define surroundingCells by calling retrieveSurroundingCells with shipCoords as its input 
+    create an empty array called acc for the accumlator 
+    for each coord in surroundingCells 
+        split coord into x and y 
+        convert x and y into numbers 
+        Set the cell at x and y on the battleField to "X" marking it as blocked 
+        add coord to acc array 
+    return acc (all blocked cell coords)
+}
+
+isCoordsFree(coords) { DONE 
+    define freeCoords by calling filter on coords 
+        filter criteria:
+            for each coordinate 
+                split the the coords 
+                assign x and y to the split coords 
+                define cell by calling retrieveCell with x and y as the inputed values 
+                if cell's value is "-" and not "X" add the coord to freeCoords
+        return true if freeCoords.length is equal to coords.length         
+}
+
+isCoordsFreeAndValid(coords){ DONE
+    return 
+        for every coord in coords 
+            assign an array containng x and y to coord split
+             convert each string to a number
+            return whether [x , y] is valid and bField [x][y] is strictly equal to '-'
+}
+
+
+
+
+
