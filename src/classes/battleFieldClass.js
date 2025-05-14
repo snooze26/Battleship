@@ -179,13 +179,15 @@ class Battle_Field {
         ship.shipsCoords = coords; 
         ship.blockedCells = blockedCells; 
         this.ships[ship.id] = ship; 
+        ++this.ships.shipsAfloat; 
+
 
         
 
         return {shipsCoords: coords , blockedCells: blockedCells}; 
     }; 
 
-    recieveAttack(coords){
+    attack(coords){
         // check if the inputed coords are available 
         console.log(this.validLocation(coords))
         if(!this.validLocation(coords)) return false;
