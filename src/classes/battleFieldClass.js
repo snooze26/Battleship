@@ -185,7 +185,7 @@ class Battle_Field {
         return {shipsCoords: coords , blockedCells: blockedCells}; 
     }; 
 
-    recieveAttack(coords){
+    attack(coords){
         // check if the inputed coords are available 
         console.log(this.validLocation(coords))
         if(!this.validLocation(coords)) return false;
