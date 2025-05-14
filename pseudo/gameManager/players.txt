@@ -2,16 +2,27 @@ Create a Player Class {
     constructors (name, difficulty=null);
     this.Name equals name    
     this.difficulty = difficulty;
+
+    placeShip(coords, ship) { 
+        const result is defined as this.BattleField.placeShip(coords,ship)
+
+        if result is true 
+            log that the ship has been placed on the board 
+            return result 
+        else 
+            log that ship failed to be placed 
+            return false 
+    } 
+
+    takeTurn(opponent , move) {
+        call recieveAttack on the opponent.board with move as the input value 
+    }
 }
 
 
 extend player class and create HumanPlayer {
     constructors are super (name , this.board = createBattleField())
     
-    takeTurn(opponent) {
-        assign move to the user's click
-        call recieveAttack on the opponent.board with move as the input value 
-    }
 }
 
 extend player class and create ComputerPlayer { 
@@ -22,9 +33,13 @@ extend player class and create ComputerPlayer {
     takeTurn(opponent) {
         let move
         if the difficulty is easy define move as the randomMove function on the opponents board 
+            move = [Math.floor(Math.random() * 8) , Math.floor(Math.random() * 8)] 
         else define move as the getSmartMove function called on the opponents board 
-        call recieveAttack on the opponent.board with move as the input value 
-}
+            move = 
+    }
+    opponent's battlefield recieve's attack from move. 
+
+
 }
 
 

@@ -146,6 +146,6 @@ test("Ship has been attacked and cell is marked" , () => {
     const [x , y] = testCoords[0]; 
     const testShip = new Ships.Carrier();
     bfTest.placeShip(testCoords , testShip); 
-    bfTest.recieveAttack([4 ,3]);
+    bfTest.attack([4 ,3]);
     expect(bfTest.bField[x][y]).toBe("H")
 });

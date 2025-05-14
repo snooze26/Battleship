@@ -9,6 +9,9 @@ class Ship {
 
     hit() { 
         this.hits++
+        if(this.isSunk()) { 
+            this.sunk = true 
+        }
     }
 
     isSunk() { 
