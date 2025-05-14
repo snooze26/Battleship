@@ -79,25 +79,25 @@ placeShip(coords, ship) { DONE
 
 }
 
-recieveAttack(input) { 
-    check if the input coords are valid if false return (making sure input coordinates are valid)
-    split the coordinates into a variable called "coords" (collecting the inputs and seperating from punctuations)
-    check if the coords return a valid cell, if false then return function (checking if the coordinate is a valid space)
+recieveAttack(coords) { 
+    call isCoordsFreeAndValid on the inputed coords 
     check if the coords are in the attackCoords array if true then return (checking if the coords have already been hit)
     create a variable cell that is retrieving the coordinates using x & y . (retrieves cell contents: the ship object)
     add coordinates to the attackCoords array; (adds the cell to the attackcoords array making it not hittable anymore)
-    check if the coordinates have already been attacked 
-        mark the ship if it has been hit 
-        assign the ship to the cell and hit the ship 
-            if ship has been sunk 
-                remove one ship from the board and make the cell content "X"
-                // add a identifier property to the ship class and a shipDamage property 
-                assign the ship's blockedCells using it's identifier to a shipsDamage variable 
-                push the blockedCells into the attackCoords variable 
-                return the ship with the status now as sunk and damage is assigned to shipsDamage 
-        ship has been hit but not sunk. 
-        mark the cell as "X"
-        return status as hit and damage is assigned to shipsDamage 
+    check and see if the ship has been hit 
+        if cell === '-' or 'X' 
+            assign the bField to 'M" 
+    if there is a hit 
+        create and assign shipId to cell 
+        create and assign ship to the ships[shipId]
+        hit ship 
+        assign the bfTeild coords to "H"
+    check if the ship is sunk 
+        if true -- shipAfloat
+        return '{Ship.Type} Destroyed'
+
+    return "{Shp.Type} has been hit" 
+
     ship has not been hit. return the status as miss and damage as null
     
 }
