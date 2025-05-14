@@ -1,0 +1,107 @@
+Conceptually 
+Start game with a prompt or menu 
+    Choose game mode: 
+        PVP OR PVC 
+    
+        IF PVP THEN CREATE P1 / P2 
+        ELSE IF PVE THEN 
+            CREATE PLAYER 1 AND COMPUTER PLAYER 
+            ASK FOR DIFFICULTY 
+
+        Have each player place their ships (randomly or manually) 
+
+        While game is not over 
+            currentPlayer.takeTurn(opponennt)
+            and check win condition 
+
+*****************************
+
+
+create a IIFE named gameManager {
+    
+    let difficulty; 
+    let gameMode
+    let player1; 
+    let player2;
+
+    chooseGameMode(mode) { 
+        assign gameMode to mode 
+        if gameMode === pvp 
+            const p1Name is defined as prompt("Player 1 enter name:")
+            assign player1 to createHumanPlayer(p1Name, false)
+            
+            const p2Name is defined as prompt("Player 2 enter name:")
+            assign player2 to cureateHumanPlayer(p2Name , false)
+
+        else if gameMode === pvc 
+            const p1Name is defined as prompt("Player 1 enter name:")
+            assign player1 to createHumanPlayer(p1Name, false)
+
+            difficulty is assigned as askDifficulty(); 
+            assign player2 to createComputer("Computer" , difficulty);
+        }
+
+        currentPlayer is defined as player1;
+        run placeShip 
+        run runGame
+
+    placeShip(){ 
+        placeShip for player1 
+        placeShip for player2 
+    }
+
+    runGame() { 
+        while the game is not over{
+            currentPlayer takeTurn get getOppoent(currentPlater)
+            if player1's board has no shipsAfloat()
+                run endGame(player2)
+                break
+            else if player2's board has no shipsAfloat() 
+                run endGame(player1)
+                break
+
+            run switchTurn();  
+        }
+    
+    }
+
+    switchTurn() { 
+        if currentPlayer equals player1 make currentPlayer player 2 
+        else currentPlayer = player1 
+    }
+
+    getOpponent(player) { 
+        if player equals player1 the return player 2 
+        if player doesnt equal player1 return player1 
+    }
+
+    restartGame() { 
+        const restart is defined as prompt players asking if they would like to "Play again?"
+        if restart is true
+            run init
+    }
+
+    endGame(winner) { 
+        alert "winner.name wins the game"
+        restartGame(); //before DOM manipulation
+        showRestartButton(); //after dom manipulation 
+    }
+
+    init() { 
+        const mode is define as prompt "Choose Game Mode PVP or PVC" make it lowercase
+        run chooseGameMode(mode)
+    }
+    return {init}
+}
+
+launch the game: 
+    gameManager.init(); 
+
+
+
+
+
+
+
+
+    
