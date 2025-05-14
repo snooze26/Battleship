@@ -176,11 +176,11 @@ class Battle_Field {
             this.bField[x][y] = ship.id;
         }
         // update ship tracking 
-        this.ships.shipsAfloat++ 
-        this.ships[ship.id] = {
-            shipCoords: coords, 
-            blockedCells : blockedCells
-        }
+        ship.shipsCoords = coords; 
+        ship.blockedCells = blockedCells; 
+        this.ships[ship.id] = ship; 
+
+        
 
         return {shipsCoords: coords , blockedCells: blockedCells}; 
     }; 
@@ -198,21 +198,40 @@ class Battle_Field {
         this.attackCords.push(coordKey); 
         
         const cell = this.bField[x][y];
-
+        // MISS
         if(cell === '-' || cell === 'X') { 
             this.bField[x][y] = "M";
             return "Enemey avoided contact."
         }
+        
+        // HIT
+        const shipId = cell; 
+        const ship = this.ships[shipId];
+         
+        ship.hit();
+        this.bField[x][y] = "H";
 
-        return "You made it pass "        
+        // SHIP SUNK
+        if(ship.isSunk()) {
+            --this.ships.shipsAfloat; 
+            return `${ship.type} has been destroyed!`
+        }
 
+        return `${ship.type} has been hit.`
     }
 }
 
 
 module.exports = Battle_Field; 
 
-const bfTest = new Battle_Field(8 , 8); 
-const testShip = new Ships.Carrier();
+// const bfTest = new Battle_Field(8 , 8); 
+// const testShip = new Ships.Carrier();
+// const testCoords = [[4,3] , [4,4], [4,5], [4,6], [4,7]]
 
-console.log(bfTest.recieveAttack([4, 3]));
+// bfTest.placeShip(testCoords, testShip);
+
+// console.log(bfTest.recieveAttack([4, 3]));
+// console.log(testShip.getStatus())
+// console.log(bfTest.recieveAttack([4, 4]));
+// console.log(testShip.getStatus())
+

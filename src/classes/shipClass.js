@@ -1,11 +1,10 @@
 class Ship {
-    constructor(type, length, hits=0,sunk=false, id=null, status="Afloat") {
+    constructor(type, length, hits=0,sunk=false, id=null) {
         this.type = type;
         this.length = length; 
         this.hits = hits;
         this.sunk = sunk
         this.id = id
-        this.status = status
     }
 
     hit() { 
@@ -18,6 +17,17 @@ class Ship {
         }
         return false
     }
+
+    getStatus() { 
+        const percentNum = this.length - this.hits; 
+        const res = percentNum / this.length
+        const percentage = (res * 100).toFixed(0);
+        return `${percentage}% health`; 
+    }
+
+    get status() { 
+        return this.getStatus();
+    };
 
 }
 
@@ -57,9 +67,10 @@ const testD = new Destroyer();
 const testS = new Submarine(); 
 const testP = new Patrol(); 
 
-testC.hits = 5; 
+testC.hits = 0; 
 
-const shipIs = testC.isSunk();
+const shipStatus = testC.getStatus(); 
+console.log(shipStatus);
 
 module.exports = {
     Ship, 

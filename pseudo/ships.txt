@@ -23,6 +23,7 @@ Create a function that calculates if a ship is sunk based on the length and numb
 
 Create a function that calculates a ship's damage return status after each hit 
     shipsStatus() {
-        
+        const percentNum = length - hits 
+        convert ^ to a percentage on  initial length percentNum / ships.length
     }
 

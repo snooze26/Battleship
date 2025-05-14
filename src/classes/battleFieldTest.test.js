@@ -140,19 +140,12 @@ const Ships = require('./shipClass.js')
 //      expect(bfTest.ships[testShip.id].blockedCells).not.toEqual(0);
 //     });
 
-
-test("Ship has been attacked" , () => { 
+test("Ship has been attacked and cell is marked" , () => { 
     const bfTest = new Battle_Field(8 , 8); 
-    const testCoords = [[4 ,3] , [4 , 4] , [4 ,5] , [4 , 6] , [4 ,7]]; 
+    const testCoords = [[4 ,3], [4 ,4] , [4 ,5] , [4 ,6] , [4 ,7]]; 
     const [x , y] = testCoords[0]; 
     const testShip = new Ships.Carrier();
     bfTest.placeShip(testCoords , testShip); 
-    console.log(bfTest.ships[testShip.id].shipCoords);
-    console.log(bfTest.ships[testShip.id].blockedCells);
-
-    bfTest.recieveAttack(testCoords);
-    expect(bfTest.ships.status).toBe("%80");
-    expect(bfTest.ships.hits).toBe(1);
-    expect(bfTest.ships.length).toBe(4);
-    expect(bfTest.bField[x][y]).toBe("X")
-})
+    bfTest.recieveAttack([4 ,3]);
+    expect(bfTest.bField[x][y]).toBe("H")
+});
