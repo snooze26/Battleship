@@ -186,8 +186,6 @@ class Battle_Field {
     }; 
 
     attack(coords){
-        // check if the inputed coords are available 
-        console.log(this.validLocation(coords))
         if(!this.validLocation(coords)) return false;
         // assigning x and y to coords 
         const [x , y] = coords 

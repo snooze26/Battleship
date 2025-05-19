@@ -72,8 +72,6 @@ const testP = new Patrol();
 
 testC.hits = 0; 
 
-const shipStatus = testC.getStatus(); 
-console.log(shipStatus);
 
 module.exports = {
     Ship, 
