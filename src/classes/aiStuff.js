@@ -26,8 +26,21 @@ function getStateOfGame(playerBoard) {
     
 }
 
+function makeAiPrompt(gameState) { 
 
-//mock data 
+    return ` You are playing BattleShip as an AI. The board is gameBoard size x gameBoard . 
+    Based on the previous moves shown below, suggest the next best move (x and y coords) that hasn't been tried yet. 
+
+    Previous moves:
+
+    ${gameState.gameHistory.map(m => `(${m.x},${m.y}) - ${m.result}`).join("\n")}
+
+    Respond with JSON in this formate: { "x": number, "y" : number }`;
+}
+
+
+
+// mock data 
 const bfTest = new Battle_Field(10 , 10); 
 const testCoords = [[4 ,3], [4 ,4] , [4 ,5] , [4 ,6] , [4 ,7]]; 
 const [x , y] = testCoords[0]; 
@@ -37,7 +50,8 @@ bfTest.attack([4 ,3]);
 bfTest.attack([4 ,5]);
 bfTest.attack([4 , 1]);
 
-console.log(bfTest.bField)
+const gameState = getStateOfGame(bfTest);
 
-console.log(getStateOfGame(bfTest));
+const aiPrompt = makeAiPrompt(gameState);
+console.log(aiPrompt);
 

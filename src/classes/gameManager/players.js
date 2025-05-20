@@ -7,7 +7,7 @@ class Players {
         this.difficulty = difficulty; 
     }
 
-
+    // place ship on the board 
     placeShip(coords , ship) { 
         const result = this.battleField.placeShip(coords , ship);
 
@@ -19,20 +19,20 @@ class Players {
             return false; 
         }
     }
-
+    // player takes turn 
     takeTurn(opponent , move) { 
         //assign move to the users click 
         opponent.battleField.attack(move);
     }
 }
-
+// create human player
 class HumanPlayer extends Players {
     constructor(name) { 
         super(name , null)
         this.battleField = new Battle_Field(10 , 10);
     }
 }
-
+//create computer player
 class ComputerPlayer extends Players {
     constructor(name , difficulty) { 
         super(name , difficulty); 
