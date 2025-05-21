@@ -1,5 +1,7 @@
 const Battle_Field = require('../battleFieldClass.js');
 const Ships = require('../shipClass.js')
+const AI = require('../aiStuff.js');
+
 
 class Players {
     constructor(name , difficulty){ 
