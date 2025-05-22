@@ -19,8 +19,13 @@ class Battle_Field {
     }
 
     validLocation(position) { 
-        const boardLimit = 8; 
+        if(!Array.isArray(position) || position.length !== 2) { 
+            console.error("Invalid position", position); 
+            return false 
+        }
+
         const [x, y] = position; 
+        const boardLimit = 8; 
         if((x >= 0 && x < boardLimit) && (y >= 0 && y < boardLimit)) return true
         return false 
     }
@@ -217,7 +222,22 @@ class Battle_Field {
 
         return `${ship.type} has been hit.`
     }
+
+    // Helper function to visualize battlefield
+    printBattleField(field) {
+    console.log('\nBattlefield:');
+    console.log('   0 1 2 3 4 5 6 7 8 9 10');
+    console.log('  ----------------');
+    field.forEach((row, rowIndex) => {
+        const rowStr = row.map(cell => {
+            if (cell === '-' || cell === 'X') return '.';
+            return cell;
+        }).join(' ');
+        console.log(`${rowIndex} | ${rowStr}`);
+    });
 }
+}
+
 
 
 module.exports = Battle_Field; 
