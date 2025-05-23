@@ -57,7 +57,7 @@ async function getNextMove(prompt) {
 
     const data = await response.json(); 
     const match = data.choices[0].message.content.match(/"x":\s*(-?\d+),\s*"y":\s*(-?\d+)/);
-    console.log(match);
+    // console.log(match);
     if(match) { 
         return {x: parseInt(match[1], 10), y: parseInt(match[2], 10)};
     } else { 

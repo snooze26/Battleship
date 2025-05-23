@@ -226,7 +226,7 @@ class Battle_Field {
     // Helper function to visualize battlefield
     printBattleField(field) {
     console.log('\nBattlefield:');
-    console.log('   0 1 2 3 4 5 6 7 8 9 10');
+    console.log('   0 1 2 3 4 5 6 7 8 9');
     console.log('  ----------------');
     field.forEach((row, rowIndex) => {
         const rowStr = row.map(cell => {

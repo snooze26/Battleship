@@ -51,8 +51,6 @@ class ComputerPlayer extends Players {
 
         opponent.battleField.attack(move)
     }
-
-    // add a function that make sure the difficulty is either "hard" or "easy"}
 }
 
 const humanPlayer = new HumanPlayer("Tony the tiger"); 
