@@ -1,5 +1,4 @@
 const Ships = require('./shipClass.js')
-
 class Battle_Field { 
     bField; 
     attackCords = [];
@@ -138,7 +137,6 @@ class Battle_Field {
         // get surorunding cells 
         const surroundingCells = this.retrieveSurroundingBlockCells(coords); 
         const blockedCells = []; 
-
         for(const cell of surroundingCells) { 
             let x , y; 
             // if cell is a string convert it to an array of numbers 
@@ -151,9 +149,10 @@ class Battle_Field {
                 [x , y] = cell; 
             }
 
-            this.bField[x][y] = "X"; 
-            
-            blockedCells.push([x,y])
+            if (this.validLocation([x ,y])) { 
+                this.bField[x][y] = "X"; 
+                blockedCells.push([x,y])
+            }            
         }
         return blockedCells;
     }
@@ -193,6 +192,7 @@ class Battle_Field {
     attack(coords){
         if(!this.validLocation(coords)) return false;
         // assigning x and y to coords 
+        // can change t o getCell(coords)
         const [x , y] = coords 
         const coordKey =  `${x}-${y}`; 
         //check if the cell has been attacked already 
@@ -210,7 +210,6 @@ class Battle_Field {
         // HIT
         const shipId = cell; 
         const ship = this.ships[shipId];
-         
         ship.hit();
         this.bField[x][y] = "H";
 
@@ -239,8 +238,8 @@ class Battle_Field {
 }
 
 
-
 module.exports = Battle_Field; 
+
 
 // const bfTest = new Battle_Field(8 , 8); 
 // const testShip = new Ships.Carrier();
@@ -252,4 +251,6 @@ module.exports = Battle_Field;
 // console.log(testShip.getStatus())
 // console.log(bfTest.recieveAttack([4, 4]));
 // console.log(testShip.getStatus())
+
+
 
