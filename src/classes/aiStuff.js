@@ -1,5 +1,9 @@
 const Battle_Field = require('./battleFieldClass.js');
 const Ships = require('./shipClass.js')
+require('dotenv').config();  // Just require and configure dotenv
+
+const OPENAI_API_KEY =  process.env.OPENAI_API_KEY;
+console.log("Loaded API key:", OPENAI_API_KEY ? "Yes" : "No"); // Check if loaded (don't log the key itself)
 
 function getStateOfGame(playerBoard) { 
     const gameFeed = []; 
