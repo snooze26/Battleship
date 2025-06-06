@@ -1,0 +1,20 @@
+collect the state of the game 
+
+
+stateOfGame(playerBoard){ 
+    const gameFeed = [] (create empty array to capture current game state)
+
+    for (let y = 0; y < playerBoard.length; y++) {  (loop through the board)
+        for (let x = 0; x < playerBoard.length; x++)
+
+        const cell  = playerBoard's coordinates (check if cell has been hit or missed if true add to history )
+
+        gameFeed.push { x , y, result cell.isHit ? "hit" : "miss" }
+        
+    }    
+
+    returning gameState 
+    boardSize : length of playerBoard 
+    previousMoves : history        
+
+}

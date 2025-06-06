@@ -1,4 +1,5 @@
 module.exports = {
+  rootDir: "src/classes",
   transform: {
     "^.+\\.js$": "babel-jest",
   },

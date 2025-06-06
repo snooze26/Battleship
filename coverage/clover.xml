@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1745880584292" clover="3.2.0">
-  <project timestamp="1745880584293" name="All files">
-    <metrics statements="10" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0" elements="20" coveredelements="0" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
-    <file name="battleFieldClass.js" path="C:\Users\langd\OneDrive\Desktop\repos\JS practice\Battleship\src\classes\battleFieldClass.js">
-      <metrics statements="10" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <line num="3" count="0" type="stmt"/>
-      <line num="4" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="cond" truecount="0" falsecount="6"/>
-      <line num="23" count="0" type="stmt"/>
-    </file>
+<coverage generated="1748052146112" clover="3.2.0">
+  <project timestamp="1748052146112" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>

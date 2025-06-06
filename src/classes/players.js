@@ -1,6 +1,6 @@
-const Battle_Field = require('../battleFieldClass.js');
-const Ships = require('../shipClass.js')
-const AI = require('../aiStuff.js');
+const Battle_Field = require('./battleFieldClass.js');
+const Ships = require('./shipClass.js')
+const AI = require('./aiStuff.js');
 
 
 class Players {
@@ -31,39 +31,37 @@ class Players {
 class HumanPlayer extends Players {
     constructor(name) { 
         super(name , null)
-        this.battleField = new Battle_Field(10 , 10);
+        this.battleField = new Battle_Field(10, 10);
     }
 }
 //create computer player
 class ComputerPlayer extends Players {
-    constructor(name , difficulty) { 
+    constructor(name , difficulty, randomFn = Math.random) { 
         super(name , difficulty); 
         this.battleField = new Battle_Field(10 , 10);
-    }
+        this.randomFn = randomFn;
+    }   
 
-    takeTurn(opponent) { 
+    async takeTurn(opponent) { 
         let move; 
-        if(difficulty === "easy") { 
-            move = [Math.floor(Math.random() * 8) , Math.floor(Math.random() * 8)];
+        if(this.difficulty === "easy") { 
+            move = [Math.floor(this.randomFn() * 8) , 
+                    Math.floor(this.randomFn() * 8)];
         }else if (this.difficulty === "hard") { 
-            // move smartMove(move)
+            const gameState = AI.getStateOfGame(this.battleField); 
+            const prompt = AI.makeAiPrompt(gameState); 
+            const nextMove = await AI.getNextMove(prompt);
+            move = [nextMove.x , nextMove.y]
         }
-
         opponent.battleField.attack(move)
+        console.log("HERE IS THE COMPUTER MOVE " , move);
+        
     }
 }
-
-const humanPlayer = new HumanPlayer("Tony the tiger"); 
-const computerPlayer = new ComputerPlayer("Tony the bot " , "hard");
-
-const carrier = new Ships.Carrier();
-const battleShip = new Ships.Battleship(); 
-
-humanPlayer.placeShip([[0 , 0] , [0 , 1] , [0 , 2] ,  [0 , 3], [0 , 4]] , carrier);
-computerPlayer.placeShip([[1 , 0] , [1 , 1] , [1 , 2] ,  [1 , 3]] , battleShip);
 
 module.exports = { 
     Players, 
     HumanPlayer, 
     ComputerPlayer
-}
+};
+
