@@ -1,0 +1,8 @@
+6/7/25 - 
+    create a function to the get gameMode in gameManager or for the dom file (THIS WILL GO IN UI FILE)
+    figure out how to transfer OPENAIKEY safely 
+        can only use env locally. 
+        will have to create env file for each system used to work on project 
+        create example for users downloading off github 
+        once done with dom manipulation i will have to host it 
+    
