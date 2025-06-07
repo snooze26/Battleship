@@ -36,7 +36,7 @@ class HumanPlayer extends Players {
 }
 //create computer player
 class ComputerPlayer extends Players {
-    constructor(name , difficulty) { 
+    constructor(name , difficulty, randomFn = Math.random) { 
         super(name , difficulty); 
         this.battleField = new Battle_Field(10 , 10);
         this.randomFn = randomFn;
@@ -51,9 +51,9 @@ class ComputerPlayer extends Players {
             const gameState = AI.getStateOfGame(this.battleField); 
             const prompt = AI.makeAiPrompt(gameState); 
             const nextMove = await AI.getNextMove(prompt);
-            move = [nextMove.x , nextMove.y];
+            move = [nextMove.x , nextMove.y]
         }
-        opponent.battleField.attack(move);        
+        opponent.battleField.attack(move)
     }
 }
 
