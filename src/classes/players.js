@@ -1,6 +1,5 @@
 const Battle_Field = require('./battleFieldClass.js');
 const Ships = require('./shipClass.js')
-const AI = require('./aiStuff.js');
 
 
 class Players {
@@ -31,31 +30,25 @@ class Players {
 class HumanPlayer extends Players {
     constructor(name) { 
         super(name , null)
-        this.battleField = new Battle_Field(10, 10);
+        this.battleField = new Battle_Field(10 , 10);
     }
 }
 //create computer player
 class ComputerPlayer extends Players {
-    constructor(name , difficulty, randomFn = Math.random) { 
+    constructor(name , difficulty) { 
         super(name , difficulty); 
         this.battleField = new Battle_Field(10 , 10);
-        this.randomFn = randomFn;
-    }   
+    }
 
-    async takeTurn(opponent) { 
+    takeTurn(opponent) { 
         let move; 
-        if(this.difficulty === "easy") { 
-            move = [Math.floor(this.randomFn() * 8) , 
-                    Math.floor(this.randomFn() * 8)];
-        }else if (this.difficulty === "hard") { 
-            const gameState = AI.getStateOfGame(this.battleField); 
-            const prompt = AI.makeAiPrompt(gameState); 
-            const nextMove = await AI.getNextMove(prompt);
-            move = [nextMove.x , nextMove.y]
+        if(difficulty === "Easy") { 
+            move = [Math.floor(Math.random() * 8) , Math.floor(Math.random() * 8)];
+        }else if (this.difficulty === "Hard") { 
+            // move smartMove(move)
         }
+
         opponent.battleField.attack(move)
-        console.log("HERE IS THE COMPUTER MOVE " , move);
-        
     }
 }
 
@@ -63,5 +56,4 @@ module.exports = {
     Players, 
     HumanPlayer, 
     ComputerPlayer
-};
-
+}
