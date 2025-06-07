@@ -1,3 +1,0 @@
-6/7/25 - 
-    create a function to the get gameMode in gameManager or for the dom file 
-    figure out how to transfer OPENAIKEY safely 
