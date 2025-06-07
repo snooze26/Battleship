@@ -6,3 +6,14 @@
         create example for users downloading off github 
         once done with dom manipulation i will have to host it 
     
+    need to continue to work on gameManager
+        finished up on most of chooseGameMode 
+        need: 
+            placeShip
+            RunGame 
+            switchTurn
+            getOpponent
+            restartGame
+            endGame
+            init
+            

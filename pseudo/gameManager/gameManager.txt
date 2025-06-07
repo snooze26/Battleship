@@ -99,9 +99,6 @@ launch the game:
 
 
 
-need to make a function to get gamemode 
-
-
 
 
 

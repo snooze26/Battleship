@@ -73,25 +73,6 @@ async function getNextMove(prompt) {
 
 }
 
-
-
-// mock data 
-const bfTest = new Battle_Field(10 , 10); 
-const testCoords = [[4 ,3], [4 ,4] , [4 ,5] , [4 ,6] , [4 ,7]]; 
-const [x , y] = testCoords[0]; 
-const testShip = new Ships.Carrier();
-bfTest.placeShip(testCoords , testShip); 
-bfTest.attack([4 ,2]);
-bfTest.attack([4 ,7]);
-bfTest.attack([4 , 1]);
-
-const gameState = getStateOfGame(bfTest);
-console.log(gameState);
-
-const aiPrompt = makeAiPrompt(gameState);
-
-const testNextMove = getNextMove(aiPrompt);
-
 module.exports = { 
     getStateOfGame, 
     makeAiPrompt, 
