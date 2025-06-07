@@ -3,6 +3,8 @@ const Ships = require('./shipClass.js')
 require('dotenv').config();  // Just require and configure dotenv
 
 const OPENAI_API_KEY =  process.env.OPENAI_API_KEY;
+
+process.env.OPENAI_API_KEY; 
 console.log("Loaded API key:", OPENAI_API_KEY ? "Yes" : "No"); // Check if loaded (don't log the key itself)
 
 function getStateOfGame(playerBoard) { 
@@ -50,7 +52,7 @@ async function getNextMove(prompt) {
         method: "POST", 
         headers:{
          "Content-Type": "application/json", 
-        "Authorization": "Bearer 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",
+        "Authorization": `Bearer ${OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo", 
@@ -58,10 +60,10 @@ async function getNextMove(prompt) {
             temperature: 0.2,
         })
     }); 
-
+    // getting response in json
     const data = await response.json(); 
     const match = data.choices[0].message.content.match(/"x":\s*(-?\d+),\s*"y":\s*(-?\d+)/);
-    // console.log(match);
+
     if(match) { 
         return {x: parseInt(match[1], 10), y: parseInt(match[2], 10)};
     } else { 
