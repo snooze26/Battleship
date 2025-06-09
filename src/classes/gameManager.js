@@ -27,15 +27,32 @@ const gameManager = (function () {
             player2 = new Players.ComputerPlayer("Computer" , difficulty); 
          }
 
-         let currentPlayer = player1;
-         // run placeShip
-         // run runGame 
     }
 
+    let currentPlayer = player1;
+        // run placeShip 
+        // run runGame 
     function placeShip() { 
         return player1.battleField.placeShip(coords, ship);
     };
 
+    function runGame() { 
+        let gameOver = true;
+        while(gameOver) { 
+            currentPlayer.Players.takeTurn(currentPlayer)
+            if(player1.Battle_Field.ships.shipsAfloat === 0) { 
+                console.log("Inside of first if statement"); 
+                //run endGame here 
+                //break
+            }else if(player2.Battle_Field.ships.shipsAfloat === 0) { 
+                //run endGame here
+                //break
+            }
+
+            // run switchTurn 
+
+        }
+    }
     return {
         chooseGameMode, 
         placeShip
