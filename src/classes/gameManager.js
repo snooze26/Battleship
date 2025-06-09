@@ -33,7 +33,7 @@ const gameManager = (function () {
     }
 
     function placeShip() { 
-        return player1.Battle_Field.placeShip(coords , ship);
+        return player1.battleField.placeShip(coords, ship);
     };
 
     return {
@@ -45,7 +45,7 @@ const gameManager = (function () {
 const testGameMode = "PVC";
 const testShip = new Ships.Battleship; 
 const testPlayer1 = new Players.HumanPlayer("Tom");
-testPlayer1.placeShip([4, 4] , [4 , 5] , [4,6], [4 , 7]);
-
-console.log(testPlayer1);
+const testPlaceShip = testPlayer1.placeShip([[4, 4] , [4 , 5] , [4,6], [4 , 7]], testShip);
 // gameManager.chooseGameMode(testGameMode); 
+console.log(testPlaceShip);
+
