@@ -50,12 +50,21 @@ const gameManager = (function () {
             }
 
             // run switchTurn 
+        }
+    }
 
+    function switchTurn() { 
+        if(currentPlayer === player1) { 
+            currentPlayer = player2; 
+        } else {
+            currentPlayer = player1; 
         }
     }
     return {
         chooseGameMode, 
-        placeShip
+        placeShip, 
+        runGame
+
     }
 })();
 
