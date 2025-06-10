@@ -9,6 +9,8 @@ const gameManager = (function () {
     let gameMode; 
     let player1; 
     let player2;
+    let currentPlayer;
+
     
     function chooseGameMode(mode) { 
         gameMode = mode; 
@@ -25,11 +27,12 @@ const gameManager = (function () {
 
             difficulty = prompt("Select computer's difficulty: Hard or Easy "); 
             player2 = new Players.ComputerPlayer("Computer" , difficulty); 
-         }
+        }
+
+        currentPlayer = player1; 
 
     }
 
-    let currentPlayer = player1;
         // run placeShip 
         // run runGame 
     function placeShip() { 
@@ -56,22 +59,27 @@ const gameManager = (function () {
     function switchTurn() { 
         if(currentPlayer === player1) { 
             currentPlayer = player2; 
+            console.log("SWITCH TO PLAYER 2", currentPlayer.name);
+
+
         } else {
             currentPlayer = player1; 
+            console.log("SWITCH TO PLAYER 1", currentPlayer.name);
+
         }
     }
     return {
         chooseGameMode, 
         placeShip, 
-        runGame
+        runGame, 
+        switchTurn
 
     }
 })();
 
-const testGameMode = "PVC";
-const testShip = new Ships.Battleship; 
-const testPlayer1 = new Players.HumanPlayer("Tom");
-const testPlaceShip = testPlayer1.placeShip([[4, 4] , [4 , 5] , [4,6], [4 , 7]], testShip);
-// gameManager.chooseGameMode(testGameMode); 
-console.log(testPlaceShip);
 
+const testGameMode = "PVP"
+
+gameManager.chooseGameMode(testGameMode);
+gameManager.switchTurn();
+gameManager.switchTurn(); 
