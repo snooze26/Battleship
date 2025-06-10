@@ -80,6 +80,13 @@ const gameManager = (function () {
     function getCurrentPlayer() { 
         return currentPlayer; 
     }
+
+    function restartGame() { 
+        const restart = prompt("Restart game?")
+        if(restart) { 
+            // run init 
+        }
+    }
     return {
         chooseGameMode, 
         getCurrentPlayer,
