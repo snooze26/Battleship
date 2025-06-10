@@ -83,3 +83,5 @@ const testGameMode = "PVP"
 gameManager.chooseGameMode(testGameMode);
 gameManager.switchTurn();
 gameManager.switchTurn(); 
+
+//REMEMBER TO TEST USE NODE not NODEMON 
