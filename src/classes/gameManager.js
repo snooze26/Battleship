@@ -9,6 +9,8 @@ const gameManager = (function () {
     let gameMode; 
     let player1; 
     let player2;
+    let currentPlayer;
+
     
     function chooseGameMode(mode) { 
         gameMode = mode; 
@@ -25,27 +27,61 @@ const gameManager = (function () {
 
             difficulty = prompt("Select computer's difficulty: Hard or Easy "); 
             player2 = new Players.ComputerPlayer("Computer" , difficulty); 
-         }
+        }
 
-         let currentPlayer = player1;
-         // run placeShip
-         // run runGame 
+        currentPlayer = player1; 
+
     }
 
+        // run placeShip 
+        // run runGame 
     function placeShip() { 
         return player1.battleField.placeShip(coords, ship);
     };
 
+    function runGame() { 
+        let gameOver = true;
+        while(gameOver) { 
+            currentPlayer.Players.takeTurn(currentPlayer)
+            if(player1.Battle_Field.ships.shipsAfloat === 0) { 
+                console.log("Inside of first if statement"); 
+                //run endGame here 
+                //break
+            }else if(player2.Battle_Field.ships.shipsAfloat === 0) { 
+                //run endGame here
+                //break
+            }
+
+            // run switchTurn 
+        }
+    }
+
+    function switchTurn() { 
+        if(currentPlayer === player1) { 
+            currentPlayer = player2; 
+            console.log("SWITCH TO PLAYER 2", currentPlayer.name);
+
+
+        } else {
+            currentPlayer = player1; 
+            console.log("SWITCH TO PLAYER 1", currentPlayer.name);
+
+        }
+    }
     return {
         chooseGameMode, 
-        placeShip
+        placeShip, 
+        runGame, 
+        switchTurn
+
     }
 })();
 
-const testGameMode = "PVC";
-const testShip = new Ships.Battleship; 
-const testPlayer1 = new Players.HumanPlayer("Tom");
-const testPlaceShip = testPlayer1.placeShip([[4, 4] , [4 , 5] , [4,6], [4 , 7]], testShip);
-// gameManager.chooseGameMode(testGameMode); 
-console.log(testPlaceShip);
 
+const testGameMode = "PVP"
+
+gameManager.chooseGameMode(testGameMode);
+gameManager.switchTurn();
+gameManager.switchTurn(); 
+
+//REMEMBER TO TEST USE NODE not NODEMON 
