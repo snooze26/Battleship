@@ -87,11 +87,27 @@ const gameManager = (function () {
             // run init 
         }
     }
+
+    function endGame(winner) { 
+        alert(`${winner.name} has won this battle.`);
+        // restartGame(); 
+        //showRestartButton() 
+    }
+
+    function init() { 
+        const mode = prompt("Choose game mode, PVP or PVC");
+        chooseGameMode(mode); 
+    }
+
+
     return {
         chooseGameMode, 
+        endGame,
         getCurrentPlayer,
         getOpponent, 
+        init, 
         placeShip, 
+        restartGame,
         runGame, 
         switchTurn
 
