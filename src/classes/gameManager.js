@@ -68,8 +68,22 @@ const gameManager = (function () {
 
         }
     }
+
+    function getOpponent(player) { 
+        if (player === player1) { 
+            return player2; 
+        } else if (player === player2){ 
+            return player1; 
+        }
+    }
+
+    function getCurrentPlayer() { 
+        return currentPlayer; 
+    }
     return {
         chooseGameMode, 
+        getCurrentPlayer,
+        getOpponent, 
         placeShip, 
         runGame, 
         switchTurn
@@ -81,7 +95,14 @@ const gameManager = (function () {
 const testGameMode = "PVP"
 
 gameManager.chooseGameMode(testGameMode);
-gameManager.switchTurn();
-gameManager.switchTurn(); 
+
+const currentP = gameManager.getCurrentPlayer();
+const opponent = gameManager.getOpponent(currentP);
+
+
+console.log("Current Player:", currentP.name);
+console.log("Opponent Player:", opponent.name);
+
+
 
 //REMEMBER TO TEST USE NODE not NODEMON 
