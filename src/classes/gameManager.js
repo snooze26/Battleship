@@ -35,23 +35,22 @@ const gameManager = (function () {
 
         // run placeShip 
         // run runGame 
-    function placeShip() { 
-        return player1.battleField.placeShip(coords, ship);
+    function placeShip(player, coords, ship) { 
+        return player.battleField.placeShip(coords, ship);
     };
 
     function runGame() { 
-        let gameOver = true;
-        while(gameOver) { 
-            currentPlayer.Players.takeTurn(currentPlayer)
-            if(player1.Battle_Field.ships.shipsAfloat === 0) { 
-                console.log("Inside of first if statement"); 
-                //run endGame here 
-                //break
-            }else if(player2.Battle_Field.ships.shipsAfloat === 0) { 
-                //run endGame here
-                //break
+        let gameOver = false;
+        while(!gameOver) { 
+            currentPlayer.takeTurn(gameManager.getOpponent(currentPlayer))
+            if(player1.battleField.ships.shipsAfloat === 0) { 
+                endGame(currentPlayer);
+                break;
+            }else if(player2.battleField.ships.shipsAfloat === 0) { 
+                endGame(currentPlayer); 
+                break; 
             }
-            // run switchTurn 
+                switchTurn(); 
         }
     }
 
@@ -82,12 +81,13 @@ const gameManager = (function () {
 
     function restartGame() { 
         const restart = prompt("Restart game?")
-        if(restart) { 
+        if(restart === "Y" || restart === "y") { 
             init(); 
-        }
+        }; 
     }
 
     function endGame(winner) { 
+        console
         console.log((`${winner.name} has won this battle.`));
         restartGame(); 
         //showRestartButton() 
@@ -116,11 +116,12 @@ const gameManager = (function () {
 
 const testGameMode = "PVP"
 const testPlayer = new Players.HumanPlayer("Langdon");
+testPlayer.battleField.ships.shipsAfloat = 2; 
 
 gameManager.chooseGameMode(testGameMode);
 
 // gameManager.restartGame();
-gameManager.endGame(testPlayer);
+gameManager.runGame();
 //TEST RESTART, ENDGAME, AND INIT 
 
 //REMEMBER TO TEST USE NODE not NODEMON 
