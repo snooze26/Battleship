@@ -1,5 +1,3 @@
-const Battle_Field = require('./battleFieldClass.js');
-const Ships = require('./shipClass.js')
 const Players = require('./players.js')
 const prompt = require('prompt-sync')({ sigint: true });
 
@@ -10,7 +8,6 @@ const gameManager = (function () {
     let player1; 
     let player2;
     let currentPlayer;
-
     
     function chooseGameMode(mode) { 
         gameMode = mode; 
@@ -28,31 +25,27 @@ const gameManager = (function () {
             difficulty = prompt("Select computer's difficulty: Hard or Easy "); 
             player2 = new Players.ComputerPlayer("Computer" , difficulty); 
         }
-
         currentPlayer = player1; 
-
     }
 
-        // run placeShip 
-        // run runGame 
-    function placeShip() { 
-        return player1.battleField.placeShip(coords, ship);
+    function placeShip(player, coords, ship) { 
+        return player.battleField.placeShip(coords, ship);
     };
 
     function runGame() { 
-        let gameOver = true;
-        while(gameOver) { 
-            currentPlayer.Players.takeTurn(currentPlayer)
-            if(player1.Battle_Field.ships.shipsAfloat === 0) { 
-                console.log("Inside of first if statement"); 
-                //run endGame here 
-                //break
-            }else if(player2.Battle_Field.ships.shipsAfloat === 0) { 
-                //run endGame here
-                //break
-            }
+        let gameOver = false;
 
-            // run switchTurn 
+        while(!gameOver) { 
+            currentPlayer.takeTurn(gameManager.getOpponent(currentPlayer))
+
+            if(player1.battleField.ships.shipsAfloat === 0) { 
+                endGame(player2);
+                break;
+            }else if(player2.battleField.ships.shipsAfloat === 0) { 
+                endGame(player1); 
+                break; 
+            }
+                if (!gameOver) switchTurn(); 
         }
     }
 
@@ -60,28 +53,53 @@ const gameManager = (function () {
         if(currentPlayer === player1) { 
             currentPlayer = player2; 
             console.log("SWITCH TO PLAYER 2", currentPlayer.name);
-
-
         } else {
             currentPlayer = player1; 
             console.log("SWITCH TO PLAYER 1", currentPlayer.name);
-
         }
     }
+
+    function getOpponent(player) { 
+        if (player === player1) { 
+            return player2; 
+        } else if (player === player2){ 
+            return player1; 
+        }
+    }
+
+    function getCurrentPlayer() { 
+        return currentPlayer; 
+    }
+
+    function restartGame() { 
+        const restart = prompt("Restart game?")
+        
+        if(restart === "Y" || restart === "y") { 
+            init(); 
+        }; 
+    }
+
+    function endGame(winner) { 
+        console.log((`${winner.name} has won this battle.`));
+        restartGame(); 
+    }
+
+    function init() { 
+        const mode = prompt("Choose game mode, PVP or PVC");
+        chooseGameMode(mode); 
+    }
+
+
     return {
         chooseGameMode, 
+        endGame,
+        getCurrentPlayer,
+        getOpponent, 
+        init, 
         placeShip, 
+        restartGame,
         runGame, 
         switchTurn
 
     }
 })();
-
-
-const testGameMode = "PVP"
-
-gameManager.chooseGameMode(testGameMode);
-gameManager.switchTurn();
-gameManager.switchTurn(); 
-
-//REMEMBER TO TEST USE NODE not NODEMON 
