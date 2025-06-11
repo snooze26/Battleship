@@ -43,11 +43,14 @@ const gameManager = (function () {
         let gameOver = false;
         while(!gameOver) { 
             currentPlayer.takeTurn(gameManager.getOpponent(currentPlayer))
+            player1.battleField.ships.shipsAfloat = 1; 
+            player2.battleField.ships.shipsAfloat = 1; 
+
             if(player1.battleField.ships.shipsAfloat === 0) { 
-                endGame(currentPlayer);
+                endGame(player2);
                 break;
             }else if(player2.battleField.ships.shipsAfloat === 0) { 
-                endGame(currentPlayer); 
+                endGame(player1); 
                 break; 
             }
                 switchTurn(); 

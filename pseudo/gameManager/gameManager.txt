@@ -88,8 +88,7 @@ create a IIFE named gameManager {
     }
 
     init() { 
-        const mode is define as prompt "Choose Game Mode PVP or PVC" make it lowercase
-        run chooseGameMode(mode)
+        const mode is define as prompt "Choose Game Mode PVP or PVC"
     }
     return {init}
 }
