@@ -51,7 +51,6 @@ const gameManager = (function () {
                 //run endGame here
                 //break
             }
-
             // run switchTurn 
         }
     }
@@ -84,13 +83,13 @@ const gameManager = (function () {
     function restartGame() { 
         const restart = prompt("Restart game?")
         if(restart) { 
-            // run init 
+            init(); 
         }
     }
 
     function endGame(winner) { 
-        alert(`${winner.name} has won this battle.`);
-        // restartGame(); 
+        console.log((`${winner.name} has won this battle.`));
+        restartGame(); 
         //showRestartButton() 
     }
 
@@ -116,16 +115,12 @@ const gameManager = (function () {
 
 
 const testGameMode = "PVP"
+const testPlayer = new Players.HumanPlayer("Langdon");
 
 gameManager.chooseGameMode(testGameMode);
 
-const currentP = gameManager.getCurrentPlayer();
-const opponent = gameManager.getOpponent(currentP);
-
-
-console.log("Current Player:", currentP.name);
-console.log("Opponent Player:", opponent.name);
-
-
+// gameManager.restartGame();
+gameManager.endGame(testPlayer);
+//TEST RESTART, ENDGAME, AND INIT 
 
 //REMEMBER TO TEST USE NODE not NODEMON 
