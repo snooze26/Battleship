@@ -18,7 +18,7 @@ const gameManager = (function () {
             let p2Name = prompt("Player 2 Enter Name: "); 
             player2 = new Players.HumanPlayer(p2Name); 
 
-        } else if ( gameMode === "PVC") {
+        } else if ( gameMode === "PVC") {npm
             let p1Name = prompt("Player 1 Enter Name: "); 
             player1 = new Players.HumanPlayer(p1Name); 
 
@@ -71,6 +71,14 @@ const gameManager = (function () {
         return currentPlayer; 
     }
 
+    function getPlayer1() { 
+        return player1;
+    }
+
+    function getPlayer2() { 
+        return player2;
+    }
+
     function restartGame() { 
         const restart = prompt("Restart game?")
         
@@ -94,6 +102,8 @@ const gameManager = (function () {
         chooseGameMode, 
         endGame,
         getCurrentPlayer,
+        getPlayer1, 
+        getPlayer2,
         getOpponent, 
         init, 
         placeShip, 
@@ -103,3 +113,8 @@ const gameManager = (function () {
 
     }
 })();
+
+module.exports = { 
+    gameManager
+}
+
