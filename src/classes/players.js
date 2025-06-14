@@ -36,18 +36,18 @@ class HumanPlayer extends Players {
 }
 //create computer player
 class ComputerPlayer extends Players {
-    constructor(name , difficulty, randomFn = Math.random) { 
-        super(name , difficulty); 
+    constructor(difficulty, randomFn = Math.random) { 
+        super("Computer", difficulty); 
         this.battleField = new Battle_Field(10 , 10);
         this.randomFn = randomFn;
     }   
 
     async takeTurn(opponent) { 
         let move; 
-        if(this.difficulty === "easy") { 
+        if(this.difficulty === "Easy") { 
             move = [Math.floor(this.randomFn() * 8) , 
                     Math.floor(this.randomFn() * 8)];
-        }else if (this.difficulty === "hard") { 
+        }else if (this.difficulty === "Hard") { 
             const gameState = AI.getStateOfGame(this.battleField); 
             const prompt = AI.makeAiPrompt(gameState); 
             const nextMove = await AI.getNextMove(prompt);
@@ -62,4 +62,8 @@ module.exports = {
     HumanPlayer, 
     ComputerPlayer
 };
+
+const compPlayer = new ComputerPlayer("Hard"); 
+
+console.log(compPlayer);
 
