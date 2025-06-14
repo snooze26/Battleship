@@ -62,8 +62,3 @@ module.exports = {
     HumanPlayer, 
     ComputerPlayer
 };
-
-const compPlayer = new ComputerPlayer("Hard"); 
-
-console.log(compPlayer);
-
