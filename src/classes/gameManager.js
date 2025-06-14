@@ -52,10 +52,8 @@ const gameManager = (function () {
     function switchTurn() { 
         if(currentPlayer === player1) { 
             currentPlayer = player2; 
-            console.log("SWITCH TO PLAYER 2", currentPlayer.name);
         } else {
             currentPlayer = player1; 
-            console.log("SWITCH TO PLAYER 1", currentPlayer.name);
         }
     }
 
