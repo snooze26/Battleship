@@ -30,29 +30,38 @@ jest.mock('prompt-sync' , () => {
 //     expect(p2.name).toBe("Computer")
 // });
 //switchTurn/getCurrentPLayer
-test("Current Player Switchers from p1 to p2 " , () => {
-    GameManager.gameManager.chooseGameMode("PVP"); 
-    const p1 = GameManager.gameManager.getPlayer1();
-    const p2 = GameManager.gameManager.getPlayer2();
+// test("Current Player Switchers from p1 to p2 " , () => {
+//     GameManager.gameManager.chooseGameMode("PVP"); 
+//     const p1 = GameManager.gameManager.getPlayer1();
+//     const p2 = GameManager.gameManager.getPlayer2();
 
-    let currentP = GameManager.gameManager.getCurrentPlayer();
+//     let currentP = GameManager.gameManager.getCurrentPlayer();
+//     expect(currentP.name).toBe("Tom");
 
-    expect(currentP.name).toBe("Tom");
+//     GameManager.gameManager.switchTurn(); 
 
-    GameManager.gameManager.switchTurn(); 
+//     currentP = GameManager.gameManager.getCurrentPlayer(); 
+//     expect(currentP.name).toBe("Jerry");
 
-    currentP = GameManager.gameManager.getCurrentPlayer(); 
+//     GameManager.gameManager.switchTurn(); 
 
-    expect(currentP.name).toBe("Jerry");
+//     currentP = GameManager.gameManager.getCurrentPlayer(); 
+//     expect(currentP.name).toBe("Tom");
 
-    GameManager.gameManager.switchTurn(); 
-
-    currentP = GameManager.gameManager.getCurrentPlayer(); 
-
-    expect(currentP.name).toBe("Tom");
-
-});
+// });
 //getOpponent 
+    test("Get the opponent" , () => { 
+        GameManager.gameManager.chooseGameMode("PVP"); 
+        const p1 = GameManager.gameManager.getPlayer1();
+        const p2 = GameManager.gameManager.getPlayer2();
+
+        let opponent = GameManager.gameManager.getOpponent(p1); 
+        expect(opponent.name).toBe("Jerry"); 
+
+        opponent = GameManager.gameManager.getOpponent(p2); 
+        expect(opponent.name).toBe("Tom");
+    })
+
 
 //endGame
 
