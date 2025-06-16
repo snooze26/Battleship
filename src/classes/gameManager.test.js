@@ -1,16 +1,27 @@
-const GameManager = require('./gameManager');
-const Players = require('./players');
+
+// dynamic answers for tests prompts 
+let answers = { 
+    restart: "Y",
+    player1: "Tom",
+    player2: "Jerry", 
+    difficulty: "Easy"
+};
 
 jest.mock('prompt-sync' , () => { 
     return () => { 
         return (question) => { 
-            if(question.includes("Player 1")) return "Tom";
-            if(question.includes("Player 2")) return "Jerry"; // if testing computer player comment this line out 
-            if(question.includes("difficulty")) return "Easy";
+            if(question.includes("Restart")) return answers.restart;
+            if(question.includes("Player 1")) return answers.player1;
+            if(question.includes("Player 2")) return answers.player2;
+            if(question.includes("difficulty")) return answers.difficulty;
             return ""; 
         }
     }
 })
+
+const GameManager = require('./gameManager');
+const Players = require('./players');
+
 //get player1 and player2 and chooseGameMode
 // test("Player 1 and 2 has been retrieved", () => {
 //     GameManager.gameManager.chooseGameMode("PVP"); 
@@ -49,21 +60,31 @@ jest.mock('prompt-sync' , () => {
 //     expect(currentP.name).toBe("Tom");
 
 // });
-//getOpponent 
+// //getOpponent 
+//     test("Get the opponent" , () => { 
+//         GameManager.gameManager.chooseGameMode("PVP"); 
+//         const p1 = GameManager.gameManager.getPlayer1();
+//         const p2 = GameManager.gameManager.getPlayer2();
+
+//         let opponent = GameManager.gameManager.getOpponent(p1); 
+//         expect(opponent.name).toBe("Jerry"); 
+
+//         opponent = GameManager.gameManager.getOpponent(p2); 
+//         expect(opponent.name).toBe("Tom");
+//     })
+
+
+//endGame
     test("Get the opponent" , () => { 
         GameManager.gameManager.chooseGameMode("PVP"); 
         const p1 = GameManager.gameManager.getPlayer1();
         const p2 = GameManager.gameManager.getPlayer2();
 
-        let opponent = GameManager.gameManager.getOpponent(p1); 
-        expect(opponent.name).toBe("Jerry"); 
+        GameManager.gameManager.endGame(p1);
 
-        opponent = GameManager.gameManager.getOpponent(p2); 
-        expect(opponent.name).toBe("Tom");
+        expect(p1.name).toBe("Ben")
     })
 
-
-//endGame
 
 //placeShip
 
