@@ -182,6 +182,7 @@ class Battle_Field {
         // update ship tracking 
         ship.shipsCoords = coords; 
         ship.blockedCells = blockedCells; 
+        this.ships.shipsAfloat++
         this.ships[ship.id] = ship; 
 
         
