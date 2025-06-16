@@ -18,7 +18,7 @@ const gameManager = (function () {
             let p2Name = prompt("Player 2 Enter Name: "); 
             player2 = new Players.HumanPlayer(p2Name); 
 
-        } else if ( gameMode === "PVC") {npm
+        } else if ( gameMode === "PVC") {
             let p1Name = prompt("Player 1 Enter Name: "); 
             player1 = new Players.HumanPlayer(p1Name); 
 
@@ -52,10 +52,8 @@ const gameManager = (function () {
     function switchTurn() { 
         if(currentPlayer === player1) { 
             currentPlayer = player2; 
-            console.log("SWITCH TO PLAYER 2", currentPlayer.name);
         } else {
             currentPlayer = player1; 
-            console.log("SWITCH TO PLAYER 1", currentPlayer.name);
         }
     }
 
