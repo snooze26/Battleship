@@ -78,12 +78,15 @@ const Players = require('./players');
     test("Get the opponent" , () => { 
         GameManager.gameManager.chooseGameMode("PVP"); 
         const p1 = GameManager.gameManager.getPlayer1();
-        const p2 = GameManager.gameManager.getPlayer2();
+       
+        const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
 
         GameManager.gameManager.endGame(p1);
 
-        expect(p1.name).toBe("Ben")
-    })
+        expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
+
+        spy.mockRestore();
+    });
 
 
 //placeShip
