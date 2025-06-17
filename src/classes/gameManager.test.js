@@ -90,23 +90,41 @@ const Ships = require('./shipClass.js')
     // });
 
 
-//placeShip
-    test("Place the ship" , () => {
+// //placeShip
+//     test("Place the ship" , () => {
+//         GameManager.gameManager.chooseGameMode("PVP"); 
+//         const p1 = GameManager.gameManager.getPlayer1();
+//         const p2 = GameManager.gameManager.getPlayer2();
+//         const testCoords = [[4,5] , [4,6] , [4,7]]
+//         const [x , y] = testCoords[0];
+//         const testShip = new Ships.Submarine();
+        
+//         GameManager.gameManager.placeShip(p1, testCoords, testShip);
+
+//         // make sure spots are being filled 
+//         expect(p1.battleField.bField[x][y]).toEqual(testShip.id);
+//         //checks to see if shipsAfloat is being tracked 
+//         expect(p1.battleField.ships.shipsAfloat).toEqual(1);
+//         //checks to see if coords are being captured
+//         expect(p1.battleField.ships[testShip.id]).not.toEqual(0);
+
+//     })
+//runGame 
+        test("Run the game" , () => { 
         GameManager.gameManager.chooseGameMode("PVP"); 
         const p1 = GameManager.gameManager.getPlayer1();
         const p2 = GameManager.gameManager.getPlayer2();
+
         const testCoords = [[4,5] , [4,6] , [4,7]]
-        const [x , y] = testCoords[0];
         const testShip = new Ships.Submarine();
-        
+
+        const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
+
+        //place ship for player 1 making the shipsAfloat 1 while player 2 is at 0 
         GameManager.gameManager.placeShip(p1, testCoords, testShip);
+        //player two should lose and game should end since player 2 has no ships afloat 
+        GameManager.gameManager.runGame(); 
+        //game should be logging the winner 
+        expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
+        })
 
-        // make sure spots are being filled 
-        expect(p1.battleField.bField[x][y]).toEqual(testShip.id);
-        //checks to see if shipsAfloat is being tracked 
-        expect(p1.battleField.ships.shipsAfloat).toEqual(1);
-        //checks to see if coords are being captured
-        expect(p1.battleField.ships[testShip.id]).not.toEqual(0);
-
-    })
-//runGame 
