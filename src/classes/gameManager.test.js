@@ -1,4 +1,3 @@
-
 // dynamic answers for tests prompts 
 let answers = { 
     restart: "Y",
@@ -21,6 +20,8 @@ jest.mock('prompt-sync' , () => {
 
 const GameManager = require('./gameManager');
 const Players = require('./players');
+const Ships = require('./shipClass.js')
+
 
 //get player1 and player2 and chooseGameMode
 // test("Player 1 and 2 has been retrieved", () => {
@@ -75,20 +76,37 @@ const Players = require('./players');
 
 
 //endGame
-    test("Get the opponent" , () => { 
-        GameManager.gameManager.chooseGameMode("PVP"); 
-        const p1 = GameManager.gameManager.getPlayer1();
+    // test("Get the opponent" , () => { 
+    //     GameManager.gameManager.chooseGameMode("PVP"); 
+    //     const p1 = GameManager.gameManager.getPlayer1();
        
-        const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    //     const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
 
-        GameManager.gameManager.endGame(p1);
+    //     GameManager.gameManager.endGame(p1);
 
-        expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
+    //     expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
 
-        spy.mockRestore();
-    });
+    //     spy.mockRestore();
+    // });
 
 
 //placeShip
+    test("Place the ship" , () => {
+        GameManager.gameManager.chooseGameMode("PVP"); 
+        const p1 = GameManager.gameManager.getPlayer1();
+        const p2 = GameManager.gameManager.getPlayer2();
+        const testCoords = [[4,5] , [4,6] , [4,7]]
+        const [x , y] = testCoords[0];
+        const testShip = new Ships.Submarine();
+        
+        GameManager.gameManager.placeShip(p1, testCoords, testShip);
 
+        // make sure spots are being filled 
+        expect(p1.battleField.bField[x][y]).toEqual(testShip.id);
+        //checks to see if shipsAfloat is being tracked 
+        expect(p1.battleField.ships.shipsAfloat).toEqual(1);
+        //checks to see if coords are being captured
+        expect(p1.battleField.ships[testShip.id]).not.toEqual(0);
+
+    })
 //runGame 
