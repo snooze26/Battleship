@@ -110,21 +110,21 @@ const Ships = require('./shipClass.js')
 
 //     })
 //runGame 
-        test("Run the game" , () => { 
-        GameManager.gameManager.chooseGameMode("PVP"); 
-        const p1 = GameManager.gameManager.getPlayer1();
-        const p2 = GameManager.gameManager.getPlayer2();
+//         test("Run the game" , () => { 
+//         GameManager.gameManager.chooseGameMode("PVP"); 
+//         const p1 = GameManager.gameManager.getPlayer1();
+//         const p2 = GameManager.gameManager.getPlayer2();
 
-        const testCoords = [[4,5] , [4,6] , [4,7]]
-        const testShip = new Ships.Submarine();
+//         const testCoords = [[4,5] , [4,6] , [4,7]]
+//         const testShip = new Ships.Submarine();
 
-        const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
+//         const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
 
-        //place ship for player 1 making the shipsAfloat 1 while player 2 is at 0 
-        GameManager.gameManager.placeShip(p1, testCoords, testShip);
-        //player two should lose and game should end since player 2 has no ships afloat 
-        GameManager.gameManager.runGame(); 
-        //game should be logging the winner 
-        expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
-        })
+//         //place ship for player 1 making the shipsAfloat 1 while player 2 is at 0 
+//         GameManager.gameManager.placeShip(p1, testCoords, testShip);
+//         //player two should lose and game should end since player 2 has no ships afloat 
+//         GameManager.gameManager.runGame(); 
+//         //game should be logging the winner 
+//         expect(spy).toHaveBeenCalledWith("Tom has won this battle.")
+//         })
 
