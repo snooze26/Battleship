@@ -101,8 +101,12 @@ const Ships = require('./shipClass.js')
         
         GameManager.gameManager.placeShip(p1, testCoords, testShip);
 
+        // make sure spots are being filled 
         expect(p1.battleField.bField[x][y]).toEqual(testShip.id);
+        //checks to see if shipsAfloat is being tracked 
         expect(p1.battleField.ships.shipsAfloat).toEqual(1);
+        //checks to see if coords are being captured
+        expect(p1.battleField.ships[testShip.id]).not.toEqual(0);
 
     })
 //runGame 
