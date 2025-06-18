@@ -1,4 +1,5 @@
 arena: 
+    background color : #007475 
 player's battlefieds: 
 ships: 
 markers: 
