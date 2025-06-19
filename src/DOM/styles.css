@@ -50,3 +50,8 @@ body {
 .cell:hover {
     background-color: #a0d2ff;
 }
+
+.clicked { 
+    background-color: red;
+    border: 1px solid black; 
+}
