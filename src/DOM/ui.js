@@ -1,7 +1,7 @@
 // const Battle_Field = require(`../classes/battleFieldClass`);
 // const Ships = require(`../classes/shipClass.js`);
 // const Players = require(`../classes/players.js`);
-
+//EVENTuALLY CHANGE THIS MODULE NAME TO UIUTILS
 
 function getGameBoard(boardId) { 
     const board = document.querySelector(boardId); 
@@ -25,7 +25,7 @@ function createBoard(boardId) {
     }
 }
 
-function setUpCellClick(boardId, callback) { 
+function setUpCellClick(boardId , callback) { 
     const board = getGameBoard(boardId); 
     
     const cells = board.querySelectorAll('.cell'); 
@@ -44,23 +44,36 @@ function setUpCellClick(boardId, callback) {
     });
 }
 
+function renderHitMiss(cell , isHit) { 
+    if(isHit) { 
+        cell.classList.add("hit");
+        cell.textContent = "H"; 
+    } else { 
+        cell.classList.add("miss"); 
+        cell.textContent = "M"; 
+    }
+}
+
 // document.addEventListener("DOMContentLoaded" , () => {
 //     const board = getGameBoard("#player1Board"); 
 //     console.log(getGameBoard('#player1Board'));
 
 // })
-createBoard('#player2Board');
 createBoard('#player1Board');
+createBoard('#player2Board');
 
+//setUpClick DEMO
+// setUpCellClick('#player2Board', (x, y, cell) => {
+// });
+// setUpCellClick('#player1Board', (x, y, cell) => {
+// });
 
-setUpCellClick('#player2Board', (x, y, cell) => {
-    // const hit = gameManager.playerAttack(x, y);  // handles logic
-    // if (hit) cell.classList.add('hit');
-    // else cell.classList.add('miss');
-});
-
-setUpCellClick('#player1Board', (x, y, cell) => {
-    // const hit = gameManager.playerAttack(x, y);  // handles logic
-    // if (hit) cell.classList.add('hit');
-    // else cell.classList.add('miss');
-});
+//renderhitmiss DEMO
+// setUpCellClick('#player2Board', (x, y, cell) => {
+//     //live version will have hit = gameManager.attackPlayer(x , y); 
+//     renderHitMiss(cell , hit);
+// });
+// setUpCellClick('#player1Board', (x, y, cell) => {
+//     //live version will have hit = gameManager.attackPlayer(x , y)
+//     renderHitMiss(cell , hit);
+// });
