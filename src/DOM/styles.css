@@ -50,3 +50,26 @@ body {
 .cell:hover {
     background-color: #a0d2ff;
 }
+
+.clicked { 
+    background-color: red;
+    border: 1px solid black; 
+}
+
+.hit { 
+    display: flex;
+    background-color: red;
+    opacity: .5;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.miss { 
+    display: flex;
+    background-color: #007475;
+    opacity: .5;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}

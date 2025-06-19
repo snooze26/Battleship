@@ -1,0 +1,12 @@
+demo for setUpClick
+setUpClick(board, (x , y, cell)) { 
+    enter conditions for function 
+}
+
+
+demo for renderHitMiss {
+    setUpCellClick(boardId) , (x , y , cell) => { 
+        const hit = gameManager.attackFcn(x , y)
+        renderHitMiss(cell , hit); 
+    }
+}
