@@ -3,10 +3,15 @@
 // const Players = require(`../classes/players.js`);
 
 
+function getGameBoard(boardId) { 
+    const board = document.querySelector(boardId); 
+    return board;
+}
+
 
 //creating link to the DOM 
 function createBoard(boardId) { 
-    const board = document.querySelector(boardId);
+    const board = getGameBoard(boardId);
     for (let y = 0; y < 10; y++) { 
         for (let x = 0; x < 10; x++) {
         const cell = document.createElement('div');
@@ -20,5 +25,15 @@ function createBoard(boardId) {
     }
 }
 
-createBoard('#player1Board');
+function setUpCellClick(boardId, callback) { 
+    const board = getGameBoard(boardId); 
+
+}
+
+// document.addEventListener("DOMContentLoaded" , () => {
+//     const board = getGameBoard("#player1Board"); 
+//     console.log(getGameBoard('#player1Board'));
+
+// })
 createBoard('#player2Board');
+
