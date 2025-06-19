@@ -1,0 +1,76 @@
+function createBoard (boardId) { DONE 
+    const board is the playerBoard from html. using boardId as input 
+    create a 10 x 10 grid 
+        loop through a loop up until 10 
+            loop isnide of this loop  up until 10 
+                create a div element named cell 
+                add the CSS design to the cell. 
+                capture the x and y data 
+                add the cell to the board 
+}
+
+setupCellClick(boardId , callback) { 
+    retrieve the board 
+
+    retrieve all cells in given board 
+    
+    attach an event listener to each cell     
+
+    get data-x and data-y 
+        loop through each cell forEach()
+            when the cell is clicked 
+                const x/y = parseInt cell data set x/y
+
+            (prevent re-clicking)
+            if the cell's classlist contains "clicked" then return; 
+
+            (mark cell as used)
+            add clicked to the cell's classlist 
+
+            (use callback to make function dynamic)
+            pass x , y, and cell in to the callback function 
+            
+    prevent re-clicking the same cell
+        if the claslist contains clicked then return
+        add "clicked" to the cell's classlist 
+    
+    make the input values for the callback x , y , and cell 
+
+    disable clicks during opponenets turn or when game ends 
+}
+
+renderHitMiss(boardId, x, y, isHit){ 
+
+}
+
+showMessage(msg , type) { 
+
+}
+
+renderShips(boardId, ships) { 
+
+}
+
+toggleTurnIndicator(currentPlayerName) { 
+
+}
+
+resetBoard(boardId) { 
+
+}
+
+initUi(boardId1 , boardId2) { 
+
+}
+
+showShipOverlay(coords) { 
+
+}
+
+disableBoard(boardId) { 
+
+}
+
+updateScore(winner , loser) { 
+
+}
