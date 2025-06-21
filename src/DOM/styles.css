@@ -128,5 +128,10 @@ body {
     background-color: yellow;
 }
 
+.battleField.hide { 
+    filter: blur(4px);   
+    pointer-events: none; 
+}
+
 
 
