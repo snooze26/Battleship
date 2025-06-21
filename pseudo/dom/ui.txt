@@ -70,7 +70,7 @@ showMessage(message) { DONE
         }
 }
 
-renderShips(boardId, ship) { 
+renderShips(boardId, ship) { DONE 
     retrieve shipCoords and the player's board 
     coords = shipsCoords
     board = player's board
@@ -84,7 +84,21 @@ renderShips(boardId, ship) {
             store the metadata of the ship 
 }
 
-toggleTurnIndicator(currentPlayerName) { 
+blurOpponent(currentPlayerName) { 
+   currentPlayer = gameManager.getcurrentPlayer()
+   p1 = GM.getp1(); 
+   p2 = GM.getp2(); 
+
+    if currentPlayer is p2 and p2.name === "Computer" 
+        hide p2board all game 
+        return 
+
+   if currentPlayer is p1 
+        show p1 board 
+        apply hide to p2's board classlit  
+    else if currentPlayer is p2
+        show p2 board 
+        apply hide to p1's board classlist 
 
 }
 
