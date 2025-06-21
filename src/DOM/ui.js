@@ -1,7 +1,6 @@
 // const Battle_Field = require(`../classes/battleFieldClass`);
-// const Ships = require(`../classes/shipClass.js`);
-// const Players = require(`../classes/players.js`);
 //EVENTuALLY CHANGE THIS MODULE NAME TO UIUTILS
+import {Ship, Carrier, Battleship, Destroyer, Submarine, Patrol} from "./shipClass.mjs";
 
 function getGameBoard(boardId) { 
     const board = document.querySelector(boardId); 
@@ -57,19 +56,33 @@ function renderHitMiss(cell , isHit) {
 function showMessage(message) { 
     const messageBox = document.querySelector("#messageBox");
     const messageText = document.querySelector("#message")
-    if(messageBox && messageText) { 
+
+    if(messageBox && messageText) { //set message
         messageText.textContent = message; 
         messageBox.style.display = "flex"; 
         messageBox.classList.add("visible");
 
-        setTimeout(() => { 
+        setTimeout(() => { // message dissapears after 3 seconds 
             messageBox.classList.add("hideMessage");
             messageText.style.display = "none"; 
         } , 3000)
     }
 }
 
-const testMessage = "HEYA THERE!!!!";
+function renderShips(boardId , ship) { 
+    const coords = ship.shipCoords; 
+    const board = document.querySelector(boardId); 
+
+    coords.forEach(([x,y]) => {
+        const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`); 
+        if(cell) { 
+            cell.classList.add("ship"); 
+            cell.classList.add(`ship-${ship.type.toLowerCase()}`); 
+            cell.dataset.shipType = ship.type; 
+        } 
+    });
+}
+
 
 
 
@@ -79,9 +92,17 @@ const testMessage = "HEYA THERE!!!!";
 //     console.log(getGameBoard('#player1Board'));
 
 // })
+
+const testShip = new Destroyer()
+const testCoords = [[4,5] , [4,6] , [4,7]];
+testShip.shipCoords = testCoords; 
+
+console.log(testShip); 
 createBoard('#player1Board');
 createBoard('#player2Board');
-showMessage(testMessage);
+showMessage("TESTIE TESTIE TESTIE");
+renderShips("#player1Board", testShip);
+
 
 
 //setUpClick DEMO
