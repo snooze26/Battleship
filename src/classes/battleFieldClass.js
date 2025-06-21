@@ -180,14 +180,14 @@ class Battle_Field {
             this.bField[x][y] = ship.id;
         }
         // update ship tracking 
-        ship.shipsCoords = coords; 
+        ship.shipCoords = coords; 
         ship.blockedCells = blockedCells; 
         this.ships.shipsAfloat++
         this.ships[ship.id] = ship; 
 
         
 
-        return {shipsCoords: coords , blockedCells: blockedCells}; 
+        return {shipCoords: coords , blockedCells: blockedCells}; 
     }; 
 
     attack(coords){

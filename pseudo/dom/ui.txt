@@ -54,12 +54,34 @@ renderHitMiss(cell, isHit){
         add "M" to the cell's text content 
 }
 
-showMessage(msg , type) { 
+showMessage(message) { DONE 
+    messageBox = "messageBox" from html
+    messageText = "messageText" from html 
 
+    if (messageBox && messageText){
+
+         messagetext = message 
+         messageBox display style = flex 
+         add "visible" to classList 
+
+         set message to dissapear after 3 seconds 
+            add hideMessage to classlist 
+            set messageText display style to none 
+        }
 }
 
-renderShips(boardId, ships) { 
+renderShips(boardId, ship) { 
+    retrieve shipCoords and the player's board 
+    coords = shipsCoords
+    board = player's board
 
+    for each x,y in coords 
+        get the corresponding cell in board using data-x and data-y 
+
+        if cell is true 
+            Add the general ship classlist to the cell 
+            add the specifc class based on the ship type 
+            store the metadata of the ship 
 }
 
 toggleTurnIndicator(currentPlayerName) { 

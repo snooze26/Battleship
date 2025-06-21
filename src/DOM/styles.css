@@ -82,6 +82,12 @@ body {
 }
 
 #messageBox { 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+#messageBox.visible { 
+    opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +102,31 @@ body {
     color: white;
     font-size: 2em;
     font-weight: 400;
-
 }
+
+.ship {
+    background-color: darkgray;
+}
+
+.ship-carrier { 
+    background-color: pink;
+}
+
+.ship-battleship { 
+    background-color: blue;
+}
+
+.ship-destroyer { 
+    background-color: green;    
+}
+
+.ship-submarine { 
+    background-color: orange;
+}
+
+.ship-patrol { 
+    background-color: yellow;
+}
+
+
 
