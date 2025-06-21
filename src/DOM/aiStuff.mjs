@@ -1,12 +1,7 @@
 import Battle_Field from './battleFieldClass.mjs';
 import * as Ships from './shipClass.mjs';
-import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-console.log("Loaded API key:", OPENAI_API_KEY ? "Yes" : "No"); // Confirm key is loaded (not printing it)
 
 function getStateOfGame(playerBoard) {
     const gameFeed = [];
@@ -42,17 +37,14 @@ Do NOT include any explanation or text — just the JSON`;
 }
 
 async function getNextMove(prompt) {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    try { 
+    const response = await fetch("http://localhost:3000/api/next-move", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${OPENAI_API_KEY}`,
+
         },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: prompt }],
-            temperature: 0.2,
-        })
+        body: JSON.stringify({ prompt })
     });
 
     const data = await response.json();
@@ -64,6 +56,10 @@ async function getNextMove(prompt) {
         console.error("Invalid AI Response");
         return null;
     }
+}catch (error) { 
+    console.error("Failed to fetch move from backend: ", error);
+    return null; 
+}
 }
 
 export {
@@ -71,3 +67,11 @@ export {
     makeAiPrompt,
     getNextMove
 };
+
+getNextMove(`Previous moves:
+(0,0) - miss
+(0,1) - hit
+
+Your response must be ONLY a JSON object on a single line, like this: {"x": 3, "y": 4}
+Do NOT include any explanation or text — just the JSON`)
+.then(move => console.log("AI move:", move));
