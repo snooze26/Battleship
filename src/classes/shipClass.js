@@ -3,8 +3,9 @@ class Ship {
         this.type = type;
         this.length = length; 
         this.hits = hits;
-        this.sunk = sunk
-        this.id = id
+        this.sunk = sunk;
+        this.id = id;
+        this.shipCoords = [];
     }
 
     hit() { 
