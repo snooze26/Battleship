@@ -104,3 +104,29 @@ body {
     font-weight: 400;
 }
 
+.ship {
+    background-color: darkgray;
+}
+
+.ship-carrier { 
+    background-color: pink;
+}
+
+.ship-battleship { 
+    background-color: blue;
+}
+
+.ship-destroyer { 
+    background-color: green;    
+}
+
+.ship-submarine { 
+    background-color: orange;
+}
+
+.ship-patrol { 
+    background-color: yellow;
+}
+
+
+
