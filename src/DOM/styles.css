@@ -82,6 +82,12 @@ body {
 }
 
 #messageBox { 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+#messageBox.visible { 
+    opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +102,5 @@ body {
     color: white;
     font-size: 2em;
     font-weight: 400;
-
 }
 

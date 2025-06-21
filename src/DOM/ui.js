@@ -54,6 +54,25 @@ function renderHitMiss(cell , isHit) {
     }
 }
 
+function showMessage(message) { 
+    const messageBox = document.querySelector("#messageBox");
+    const messageText = document.querySelector("#message")
+    if(messageBox && messageText) { 
+        messageText.textContent = message; 
+        messageBox.style.display = "flex"; 
+        messageBox.classList.add("visible");
+
+        setTimeout(() => { 
+            messageBox.classList.add("hideMessage");
+            messageText.style.display = "none"; 
+        } , 3000)
+    }
+}
+
+const testMessage = "HEYA THERE!!!!";
+
+
+
 
 // document.addEventListener("DOMContentLoaded" , () => {
 //     const board = getGameBoard("#player1Board"); 
@@ -62,6 +81,8 @@ function renderHitMiss(cell , isHit) {
 // })
 createBoard('#player1Board');
 createBoard('#player2Board');
+showMessage(testMessage);
+
 
 //setUpClick DEMO
 // setUpCellClick('#player2Board', (x, y, cell) => {
