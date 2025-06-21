@@ -54,6 +54,7 @@ function renderHitMiss(cell , isHit) {
     }
 }
 
+
 // document.addEventListener("DOMContentLoaded" , () => {
 //     const board = getGameBoard("#player1Board"); 
 //     console.log(getGameBoard('#player1Board'));
