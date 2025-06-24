@@ -82,7 +82,21 @@ function renderShips(boardId, ship) {
 }
 
 function blurOpponent(currentPlayer) {
-    // Optional: add UI blur logic based on current player
+      const player1 = gameManager.getPlayer1(); 
+      const player2 = gameManager.getPlayer2();
+      const currentPlayer = gameManager.getCurrentPlayer(); 
+
+      if (currentPlayer === player2 && player2.name === "Computer"){ 
+        player2.battleField.classList.add(".hide");
+      }
+
+      if (currentPlayer === player1) { 
+        currentPlayer.battleField.classList.add("")
+        player2.battleField.classList.add(".hide"); 
+      } else if (currentPlayer === player2) { 
+        player1.battleField.classList.add(".hide");
+      }
+   
 }
 
 
@@ -90,6 +104,12 @@ function blurOpponent(currentPlayer) {
 const testShip = new Destroyer();
 const testCoords = [[4, 5], [4, 6], [4, 7]];
 testShip.shipCoords = testCoords;
+
+const testP1 = new Players.HumanPlayer("Tom")
+const testP2 = new Players.HumanPlayer("Jerry"); 
+
+const testcurrentPlayer = gameManager.getCurrentPlayer(); 
+
 
 console.log(testShip);
 createBoard('#player1Board');
