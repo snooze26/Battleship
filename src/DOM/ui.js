@@ -81,41 +81,37 @@ function renderShips(boardId, ship) {
     });
 }
 
-function blurOpponent(currentPlayer) {
-      const player1 = gameManager.getPlayer1(); 
-      const player2 = gameManager.getPlayer2();
-      const currentPlayer = gameManager.getCurrentPlayer(); 
+function blurOpponent(currentPlayer, player1, player2) {
+    console.log(player2);
+    console.log(player1)
+    if(player1.battleField) player1.battleField.classList.add("hide");
+    if(player2.battleField) player2.battleField.classList.add("hide");
 
-      if (currentPlayer === player2 && player2.name === "Computer"){ 
-        player2.battleField.classList.add(".hide");
-      }
-
-      if (currentPlayer === player1) { 
-        currentPlayer.battleField.classList.add("")
-        player2.battleField.classList.add(".hide"); 
-      } else if (currentPlayer === player2) { 
-        player1.battleField.classList.add(".hide");
-      }
-   
+    if (currentPlayer.battleField) currentPlayer.battleField.classList.remove("hide"); 
 }
 
 
 // ======== TEMPORARY TEST LOGIC BELOW ========
-const testShip = new Destroyer();
-const testCoords = [[4, 5], [4, 6], [4, 7]];
-testShip.shipCoords = testCoords;
 
-const testP1 = new Players.HumanPlayer("Tom")
-const testP2 = new Players.HumanPlayer("Jerry"); 
+document.addEventListener("DOMContentLoaded"  ,() => { 
+const testP1 = new HumanPlayer("Tom")
+const testP2 = new HumanPlayer("Jerry"); 
 
-const testcurrentPlayer = gameManager.getCurrentPlayer(); 
+const p1Board = "#player1Board"; 
+const p2Board = "#player2Board"; 
+
+testP1.battleField = document.querySelector("#player1Board");
+testP2.battleField = document.querySelector("#player2Board"); 
+
+createBoard(p1Board);
+createBoard(p2Board);
 
 
-console.log(testShip);
-createBoard('#player1Board');
-createBoard('#player2Board');
-showMessage("TESTIE TESTIE TESTIE");
-renderShips("#player1Board", testShip);
+blurOpponent(testP1, testP1, testP2);
+})
+
+
+
 
 
 // EXPORTS (if you want to use this as a module)
