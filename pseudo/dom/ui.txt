@@ -85,20 +85,10 @@ renderShips(boardId, ship) { DONE
 }
 
 blurOpponent(currentPlayerName) { 
-   currentPlayer = gameManager.getcurrentPlayer()
-   p1 = GM.getp1(); 
-   p2 = GM.getp2(); 
+    if player1 battlefield is not null then add the hide classlist to the battlefield 
+    if player2 battlefield is not null then add the hide classlist to the battleField 
 
-    if currentPlayer is p2 and p2.name === "Computer" 
-        hide p2board all game 
-        return 
-
-   if currentPlayer is p1 
-        show p1 board 
-        apply hide to p2's board classlit  
-    else if currentPlayer is p2
-        show p2 board 
-        apply hide to p1's board classlist 
+    if current player's battlefield is true then remove the hide effect 
 
 }
 
