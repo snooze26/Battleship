@@ -1,4 +1,4 @@
-// Import all relevant ESM modules
+// Imports
 import { Ship, Carrier, Battleship, Destroyer, Submarine, Patrol } from "./shipClass.mjs";
 import { gameManager } from "./gameManager.mjs";
 import { Players, HumanPlayer, ComputerPlayer } from "./players.mjs";
@@ -114,7 +114,7 @@ blurOpponent(testP1, testP1, testP2);
 
 
 
-// EXPORTS (if you want to use this as a module)
+// EXPORTS 
 export {
     getGameBoard,
     createBoard,
