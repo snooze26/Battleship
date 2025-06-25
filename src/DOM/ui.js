@@ -87,14 +87,16 @@ function renderShips(boardId, ship) {
 }
 
 function blurOpponent(currentPlayer, player1, player2) {
-    console.log(player2);
-    console.log(player1)
+
     if(player1.battleField) player1.battleField.classList.add("hide");
     if(player2.battleField) player2.battleField.classList.add("hide");
 
     if (currentPlayer.battleField) currentPlayer.battleField.classList.remove("hide"); 
 }
 
+function resetBoard(boardId) { 
+    
+} 
 
 // ======== TEMPORARY TEST LOGIC BELOW ========
 
