@@ -13,15 +13,20 @@ function getGameBoard(boardId) {
 
 function createBoard(boardId) {
     const board = getGameBoard(boardId);
+    const grid = []; // grid to capture cells 
     for (let y = 0; y < 10; y++) {
+        const row = []; // create row 
         for (let x = 0; x < 10; x++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.dataset.x = x;
             cell.dataset.y = y;
             board.appendChild(cell);
+            row.push(cell);
         }
+        grid.push(row); 
     }
+    return grid;
 }
 
 function setUpCellClick(boardId, callback) {
