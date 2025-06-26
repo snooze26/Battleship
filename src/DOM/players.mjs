@@ -6,6 +6,7 @@ class Players {
     constructor(name, difficulty) {
         this.name = name;
         this.difficulty = difficulty;
+        this.cellGrid = []; 
     }
 
     // place ship on the board 
