@@ -86,6 +86,13 @@ function renderShips(boardId, ship) {
     });
 }
 
+function renderWrapper(player, ship, coords, boardSelector) { 
+    const result = player.placeShip(coords, ship);
+    if(result) { 
+        renderShips(boardSelector, ship)
+    } 
+}
+
 function blurOpponent(currentPlayer, player1, player2) {
 
     if(player1.battleField) player1.battleField.classList.add("hide");
@@ -95,27 +102,45 @@ function blurOpponent(currentPlayer, player1, player2) {
 }
 
 function resetBoard(boardId) { 
-    
-} 
+    const board = document.querySelector(boardId);
+    if (!board) return; 
+
+    const cells = board.querySelectorAll(".cell"); 
+    cells.forEach(cell => { 
+        cell.className = 'cell'; 
+        cell.textContent = ''; 
+    }); 
+}
+
+function fullReset(player, boardId) { 
+    resetBoard(boardId); 
+    player.battleField.clearBoard(); 
+}
 
 // ======== TEMPORARY TEST LOGIC BELOW ========
 
 document.addEventListener("DOMContentLoaded"  ,() => { 
 const testP1 = new HumanPlayer("Tom")
-const testP2 = new HumanPlayer("Jerry"); 
+const testP2 = new HumanPlayer("Jerry");
 
-const p1Board = "#player1Board"; 
-const p2Board = "#player2Board"; 
+testP1.cellGrid = createBoard('#player1Board')
+testP2.cellGrid = createBoard('#player2Board')
 
-testP1.battleField = document.querySelector("#player1Board");
-testP2.battleField = document.querySelector("#player2Board"); 
+// sample ships 
+const carrier = new Carrier();
+const battleship = new Battleship();
+const destroyer = new Destroyer();   
+const submarine = new Submarine();   
+const patrol = new Patrol();         
 
-createBoard(p1Board);
-createBoard(p2Board);
+const testCoords = [[4,5], [4,6]]
+
+renderWrapper(testP1, patrol, testCoords, '#player1Board');
+
+});
 
 
-blurOpponent(testP1, testP1, testP2);
-})
+
 
 
 

@@ -94,7 +94,7 @@ blurOpponent(currentPlayerName) {
 
 resetBoard(boardId) { 
   for each cell in board make the value "" 
-  clear any styling done to cells 
+  clear any styling done to cells and reset it to the default 
   reset these Battle_Field properties: 
     -set shipsAfloat to 0; 
     -empty attackcoords 
