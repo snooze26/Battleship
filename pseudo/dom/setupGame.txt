@@ -1,0 +1,6 @@
+initUi(boardId1 , boardId2) { 
+    create grids for both players 
+    reset and previous board state visually 
+    set click events for player interaction (placeShip or attackShip);
+    
+}

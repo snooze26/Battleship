@@ -84,7 +84,7 @@ renderShips(boardId, ship) { DONE
             store the metadata of the ship 
 }
 
-blurOpponent(currentPlayerName) { 
+blurOpponent(currentPlayerName) { DONE
     if player1 battlefield is not null then add the hide classlist to the battlefield 
     if player2 battlefield is not null then add the hide classlist to the battleField 
 
@@ -92,16 +92,12 @@ blurOpponent(currentPlayerName) {
 
 }
 
-resetBoard(boardId) { 
+resetBoard(boardId) { DONE 
   for each cell in board make the value "" 
   clear any styling done to cells and reset it to the default 
   reset these Battle_Field properties: 
     -set shipsAfloat to 0; 
     -empty attackcoords 
-}
-
-initUi(boardId1 , boardId2) { 
-
 }
 
 showShipOverlay(coords) { 
