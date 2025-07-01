@@ -133,7 +133,8 @@ const destroyer = new Destroyer();
 const submarine = new Submarine();   
 const patrol = new Patrol();         
 
-const testCoords = [[4,5], [4,6]]
+const testCoords = [[4,5], [4,6]
+
 renderWrapper(testP1, patrol, testCoords, '#player1Board');
 console.log("shipsAfloat before the reset: ", testP1.battleField.ships.shipsAfloat); 
 
