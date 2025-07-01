@@ -166,7 +166,7 @@ class Battle_Field {
         }
         //check if the coords are free and valid 
         if (!this.isCoordsFreeAndValid(coords)) {
-            console.error("Please enter a valid location");
+            console.error(`These are not valid coordinates : ${coords}`);
             return false;
         }
         // place ship on board 
