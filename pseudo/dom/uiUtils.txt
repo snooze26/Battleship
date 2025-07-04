@@ -100,8 +100,18 @@ resetBoard(boardId) { DONE
     -empty attackcoords 
 }
 
-showShipOverlay(coords) { 
+clearShipOverlLay(boardId) { 
+    capture all the cells that were highlighted 
+    for each cell remove the classlist 
+}
 
+showShipOverlay(coords, boardId) { 
+    call clearShipOverlLay with the boardId 
+    for each x and y coord in the coords array 
+        assign cell to the dataset to a literal string that builds a CSS attribute selector
+        if the cell is true and there is no classlist for any ship styling 
+            add the ship-preview classlist of the cell 
+            add "🚢" to the text context of the cell
 }
 
 disableBoard(boardId) { 
