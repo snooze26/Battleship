@@ -2,6 +2,7 @@ Create a Player Class {
     constructors (name, difficulty=null);
     this.Name equals name    
     this.difficulty = difficulty;
+    this.score = 0; 
 
     placeShip(coords, ship) { 
         const result is defined as this.BattleField.placeShip(coords,ship)
@@ -38,9 +39,13 @@ extend player class and create ComputerPlayer {
             move = 
     }
     opponent's battlefield recieve's attack from move. 
-
-
 }
 
+updateScore(opponent) { 
+    
+    add score as a property to players 
+    totalShips = 5 
+    shipsSUnk = totalShips - opponents.ships.shipsAfloat
+}
 
 
