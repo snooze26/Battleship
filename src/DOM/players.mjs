@@ -7,6 +7,7 @@ class Players {
         this.name = name;
         this.difficulty = difficulty;
         this.cellGrid = []; 
+        this.score = 0; 
     }
 
     // place ship on the board 
@@ -25,6 +26,14 @@ class Players {
     // player takes turn 
     takeTurn(opponent, move) {
         opponent.battleField.attack(move);
+    }
+
+    updateScore(opponent) { 
+        const totalShips = 5; 
+
+        const shipsSunk = totalShips - opponent.battleField.ships.shipsAfloat; 
+        
+        this.score = shipsSunk; 
     }
 }
 
@@ -63,8 +72,23 @@ class ComputerPlayer extends Players {
     }
 }
 
+
 export {
     Players,
     HumanPlayer,
     ComputerPlayer
 };
+
+
+const testPlayer = new HumanPlayer("Berry"); 
+const testPlayer2 = new HumanPlayer("Berrry"); 
+
+
+testPlayer.battleField.ships.shipsAfloat = 2; 
+
+console.log(testPlayer.battleField.ships.shipsAfloat)
+
+
+testPlayer2.updateScore(testPlayer)
+
+console.log(`Player 1 Score: ${testPlayer2.score}`);
