@@ -100,18 +100,18 @@ resetBoard(boardId) {
     -empty attackcoords 
 }
 
-initUi(boardId1 , boardId2) { 
 
-}
 
 showShipOverlay(coords) { 
 
 }
 
-disableBoard(boardId) { 
 
-}
-
-updateScore(winner , loser) { 
+updateScore(player1 , player2) { 
+    create html elems for scoreboard and scores for p1 and p2 
+    create css styling for the scoreboard and scores for p1 and p2 
+    
+    document query the player1 scoreboard and set the text content to player1score 
+    document query the player2 scoreboard and set the text content to player2score 
 
 }
