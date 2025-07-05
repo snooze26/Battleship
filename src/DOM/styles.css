@@ -138,5 +138,33 @@ body {
     pointer-events: none; 
 }
 
+#scoreBoards { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    padding: 1em;
+    background-color: #606464;
 
+    opacity: .5;
+    width: 55%;
+    height: auto;
+    border-radius: 1em;
+}
+
+.playerScore { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    color: rgb(56, 173, 202);
+    border: solid 1px white;
+    gap: 0px;
+}
+
+.scores{
+    font-size: large;
+    font-weight: bold;
+}
 
