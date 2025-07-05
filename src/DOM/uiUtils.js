@@ -146,6 +146,11 @@ function showShipOverLay(coords, boardId) {
         }
     });
 }
+
+function updateScoreUI(player1, player2) { 
+    document.querySelector('#p1Score').textContent = player1.score; 
+    document.querySelector('#p2Score').textContent = player2.score; 
+}
 // ======== TEMPORARY TEST LOGIC BELOW ========
 
 document.addEventListener("DOMContentLoaded"  ,() => { 
@@ -154,6 +159,13 @@ const testP2 = new HumanPlayer("Jerry");
 
 testP1.cellGrid = createBoard('#player1Board')
 testP2.cellGrid = createBoard('#player2Board')
+
+testP1.battleField.ships.shipsAfloat = 2; 
+
+testP2.updateScore(testP1)
+updateScoreUI(testP1, testP2);
+
+
 
 // sample ships 
 const carrier = new Carrier();
@@ -176,7 +188,6 @@ showShipOverLay(testCoords, '#player1Board');
 
 
 
-
 // EXPORTS 
 export {
     getGameBoard,
@@ -185,5 +196,7 @@ export {
     renderHitMiss,
     showMessage,
     renderShips,
-    blurOpponent
+    blurOpponent, 
+    showShipOverLay,
+    updateScoreUI
 };

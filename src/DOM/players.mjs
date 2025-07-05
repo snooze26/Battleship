@@ -80,15 +80,3 @@ export {
 };
 
 
-const testPlayer = new HumanPlayer("Berry"); 
-const testPlayer2 = new HumanPlayer("Berrry"); 
-
-
-testPlayer.battleField.ships.shipsAfloat = 2; 
-
-console.log(testPlayer.battleField.ships.shipsAfloat)
-
-
-testPlayer2.updateScore(testPlayer)
-
-console.log(`Player 1 Score: ${testPlayer2.score}`);

@@ -110,8 +110,8 @@ showShipOverlay(coords) {
 updateScore(player1 , player2) { 
     create html elems for scoreboard and scores for p1 and p2 
     create css styling for the scoreboard and scores for p1 and p2 
-    
-    document query the player1 scoreboard and set the text content to player1score 
-    document query the player2 scoreboard and set the text content to player2score 
+
+    document query the player1 score and set the text content to player1score 
+    document query the player2 score and set the text content to player2score 
 
 }
