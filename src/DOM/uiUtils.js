@@ -86,13 +86,20 @@ function renderShips(boardId, ship) {
     });
 }
 
-function renderWrapper(player, ship, coords, boardSelector) { 
+function renderShipToUi(player, ship, coords, boardId) { 
     const result = player.placeShip(coords, ship);
     if(result) { 
-        renderShips(boardSelector, ship)
+        renderShips(boardId, ship)
     } 
 }
 
+function placeAndRenderShip(player, boardId, coords, ship) { 
+    const result = player.placeShip(coords, ship); 
+
+    if(result) { 
+        renderShips(boardId , ship)
+    }
+}
 function blurOpponent(currentPlayer, player1, player2) {
 
     if(player1.battleField) player1.battleField.classList.add("hide");
@@ -117,6 +124,28 @@ function fullReset(player, boardId) {
     player.battleField.clearBoard(); 
 }
 
+function clearShipOverLay(boardId) { 
+    const board = document.querySelector(boardId)
+    const cells = board.querySelectorAll('.ship-preview');
+    console.log(cells)
+    cells.forEach(cell => {
+        cell.classList.remove('ship-preview'); 
+    });
+}
+
+function showShipOverLay(coords, boardId) { 
+    const board = document.querySelector(boardId);
+    if(!boardId) return; 
+    
+    clearShipOverLay(boardId); 
+    coords.forEach(([x , y]) => {
+        const cell = board.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+        if (cell && !cell.classList.contains('ship')) { 
+            cell.classList.add('ship-preview'); 
+            cell.textContent = "🚢"; 
+        }
+    });
+}
 // ======== TEMPORARY TEST LOGIC BELOW ========
 
 document.addEventListener("DOMContentLoaded"  ,() => { 
@@ -133,14 +162,11 @@ const destroyer = new Destroyer();
 const submarine = new Submarine();   
 const patrol = new Patrol();         
 
-const testCoords = [[4,5], [4,6]
+const testCoords = [[4,5], [4,6]];
 
-renderWrapper(testP1, patrol, testCoords, '#player1Board');
-console.log("shipsAfloat before the reset: ", testP1.battleField.ships.shipsAfloat); 
-
-fullReset(testP1, '#player1Board')
-
-console.log("shipsAfloat after the reset: ", testP1.battleField.ships.shipsAfloat)
+// testP1.placeShip(testCoords, patrol); 
+// renderShips('#player1Board' , patrol);
+showShipOverLay(testCoords, '#player1Board');
 
 });
 

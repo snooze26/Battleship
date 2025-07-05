@@ -58,6 +58,10 @@ body {
     background-color: #a0d2ff;
 }
 
+.cell.ship-preview {
+  background-color: rgba(53, 151, 197, 0.3); /* Light blue overlay */
+}
+
 .clicked { 
     background-color: red;
     border: 1px solid black; 
@@ -127,6 +131,7 @@ body {
 .ship-patrol { 
     background-color: yellow;
 }
+
 
 .battleField.hide { 
     filter: blur(4px);   
