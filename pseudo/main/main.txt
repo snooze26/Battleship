@@ -1,5 +1,7 @@
 import gameManger, uIUtils, shipClasses 
 
+set currentGame phase 
+
 DocumentContentLoad { 
     call init from gameManager; 
 
@@ -7,8 +9,7 @@ DocumentContentLoad {
     create boards for both players (.cellGrid = #playerBoard)
 
     track the current phase of the game (currentPhase || placement)
-    set "currentPhase" to 'placement' 
-
+    
     call setUpShips(player1)
 
 }
