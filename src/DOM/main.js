@@ -6,20 +6,25 @@ let currentPhase = 'placement'; // keep track of game (battle or placement)
 
 
 document.addEventListener("DOMContentLoaded" , () => {
-    gameManager.init(); 
+    // gameManager.init(); 
 
-    const player1 = gameManager.getPlayer1(); 
-    const player2 = gameManager.getPlayer2(); 
+    // const player1 = gameManager.getPlayer1(); 
+    // const player2 = gameManager.getPlayer2(); 
 
-    player1.cellGrid = uiUtils.createBoard("#player1Board"); 
-    player2.cellGrid = uiUtils.createBoard("#player2Board"); 
+    // player1.cellGrid = uiUtils.createBoard("#player1Board"); 
+    // player2.cellGrid = uiUtils.createBoard("#player2Board"); 
 
-    setUpShips(player1); 
+    setUpShips(); // add player1 after testing 
 })
 
-// setUpShip(player) { 
+function setUpShips(player) { 
+    const buttons = document.querySelectorAll(".ships"); 
 
-// }
+    let selectShip = null; 
+    let orientation = "horziontal"; 
+
+
+}
 
 // startBattle() { 
 
