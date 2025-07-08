@@ -18,12 +18,28 @@ document.addEventListener("DOMContentLoaded" , () => {
 })
 
 function setUpShips(player) { 
+
+    const shipMap = { 
+        Carrier: new Carrier(),
+        Battleship: new Battleship(), 
+        Destroyer: new Destroyer(), 
+        Submarine: new Submarine(), 
+        Patrol: new Patrol()
+    };
+
     const buttons = document.querySelectorAll(".ships"); 
 
-    let selectShip = null; 
-    let orientation = "horziontal"; 
+    let selectedShip = null; 
+    let orientation = "horizontal"; 
 
+    buttons.forEach(button => {
+        button.addEventListener("click" , () => {
+            const shipType = button.dataset.ship; 
 
+            selectedShip = shipMap[shipType]; 
+            console.log(`Selected: ${shipType}`);
+        })
+    });
 }
 
 // startBattle() { 

@@ -15,6 +15,7 @@ DocumentContentLoad {
 }
 
 setUpShip(player) { 
+    create a lookup map that contains the type of ships
     create dom buttons for each ship 
     create rotate ship button 
 

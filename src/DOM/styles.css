@@ -108,6 +108,13 @@ body {
     font-weight: 400;
 }
 
+#rotate { 
+    background: #007475;
+    border-radius: 10%;
+    color: white;
+    flex-direction: row;
+    height: 75%;
+}
 
 .ship {
     background-color: darkgray;
