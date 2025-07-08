@@ -108,16 +108,36 @@ body {
     font-weight: 400;
 }
 
+
 .ship {
     background-color: darkgray;
 }
-
-.ship-carrier { 
-    background-color: pink;
+button.ships {
+    height: 75%;
+    background: #007475;
+    color: white;
+    flex-direction: row;
 }
 
 .ship-battleship { 
     background-color: blue;
+}
+
+.shipButtons {
+    margin-top: 1em;
+    height: 3em;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+.shipButtons.hide { 
+    display : none; 
+}
+
+.ship-carrier { 
+    background-color: pink;
 }
 
 .ship-destroyer { 
@@ -144,9 +164,7 @@ body {
     justify-content: center;
     margin: 1em;
     padding: 1em;
-    background-color: #606464;
-
-    opacity: .5;
+    background-color: #007475;
     width: 55%;
     height: auto;
     border-radius: 1em;
@@ -158,7 +176,7 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 50%;
-    color: rgb(56, 173, 202);
+    color: white;
     border: solid 1px white;
     gap: 0px;
 }
