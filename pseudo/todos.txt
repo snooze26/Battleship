@@ -17,3 +17,8 @@
             endGame
             init
             
+
+7/7/25:
+need to go back and fix computer player's difficulty being set; 
+CHOOSEGAMEMODE - make changes to pvp and pvc input. take it in lowercase or uppercase 
+

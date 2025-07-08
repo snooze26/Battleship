@@ -1,0 +1,64 @@
+import gameManger, uIUtils, shipClasses 
+
+DocumentContentLoad { 
+    call init from gameManager; 
+
+    retrieve both players 
+    create boards for both players (.cellGrid = #playerBoard)
+
+    track the current phase of the game (currentPhase || placement)
+    set "currentPhase" to 'placement' 
+
+    call setUpShips(player1)
+
+}
+
+setUpShip(player) { 
+    create dom buttons for each ship 
+    create rotate ship button 
+
+    init selectedShip to null 
+    init orientation to horizontal 
+
+    for each shipButton: 
+        on click: 
+            set selectedShip to corresponding ship instance 
+    
+    on rotate button click
+        toggle orientation between horizontal and vertical 
+    
+    call setupCellClick from util on player's board 
+        if selectedShip is not null: 
+            compute ship coords based on clicked cell and orientation 
+            attempt to placeShip on player's battlefield 
+            If successful 
+                clear the selectedShip 
+                if all ships placed for player 
+                    if player is player1: 
+                        call setupShipSelection on player 2 
+                    else 
+                        set currentPhase to "battle" 
+                        call startBattle(); 
+            else 
+                show error message for invalid placement 
+            
+}
+
+startBattle() { 
+    set currentPlayer to player1 
+
+    setup utils.setupCellClick on opponent's board: 
+        on click: 
+            if currentPhase is "battle": 
+            process attack using currentPlayer.takeTurn 
+            update UI with hit/miss 
+            check if game is ending 
+            switch currentplayer 
+    
+    show battle started message 
+}
+
+checkGameEnd(): 
+    IF either player has no ships afloat: 
+    show winner message 
+    offer restart option 

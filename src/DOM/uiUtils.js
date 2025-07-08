@@ -180,9 +180,10 @@ const uiUtils = (() => {
 
     // ========== Initialize on DOM Ready ==========
 
-    document.addEventListener("DOMContentLoaded", () => {
-        initTestData(); // remove or disable in production
-    });
+    // document.addEventListener("DOMContentLoaded", () => {
+        // initTestData(); // remove or disable in production
+        // prompt("Hi")
+    // });
 
     // ========== Public API ==========
 
