@@ -113,12 +113,15 @@ body {
     background-color: darkgray;
 }
 button.ships {
-    height: 75%;
     background: #007475;
+    border-radius: 10%;
     color: white;
     flex-direction: row;
+    height: 75%;
 }
-
+:hover.ships { 
+    opacity: .8;
+}
 .ship-battleship { 
     background-color: blue;
 }
@@ -126,7 +129,7 @@ button.ships {
 .shipButtons {
     margin-top: 1em;
     height: 3em;
-    width: 60%;
+    width:55%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,7 +180,7 @@ button.ships {
     flex-direction: column;
     width: 50%;
     color: white;
-    border: solid 1px white;
+    border: solid 1px black;
     gap: 0px;
 }
 
